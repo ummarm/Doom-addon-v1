@@ -86,8 +86,17 @@ This repo includes a GitHub Actions workflow at
 - If one of the tracked upstream scrapers changes, the workflow updates the local
   provider file, preserves Doom-addon's local patches, bumps the affected version
   numbers in `providers.json`, bumps the Stremio `manifest.json` version, and
-  opens a pull request automatically.
+  commits the update directly to `main`.
 - You can also run it manually from the GitHub Actions tab with `force=true`.
+
+## Windows auto-update
+
+On the Windows host, schedule `scripts/update-windows.ps1` to keep the running
+Docker container current with GitHub:
+
+```powershell
+powershell.exe -ExecutionPolicy Bypass -File C:\server\Doom-addon\scripts\update-windows.ps1
+```
 
 Tracked upstream files:
 
