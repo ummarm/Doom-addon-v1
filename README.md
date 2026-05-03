@@ -1,6 +1,6 @@
 # Doom-addon
 
-Doom-addon is a Stremio stream add-on that wraps these seven providers from
+Doom-addon is a Stremio stream add-on that wraps these eight providers from
 `D3adlyRocket/All-in-One-Nuvio`:
 
 - `4KHDHub`
@@ -8,6 +8,7 @@ Doom-addon is a Stremio stream add-on that wraps these seven providers from
 - `4khdhub-tv`
 - `HindMoviez`
 - `MovieBlast`
+- `MovieBox`
 - `MoviesDrive`
 - `StreamFlix`
 
@@ -25,6 +26,7 @@ every enabled provider, merges the results, and returns Stremio stream objects.
 - `providers/hdhub4u.js`
 - `providers/hindmoviez.js`
 - `providers/movieblast.js`
+- `providers/moviebox.js`
 - `providers/moviesdrive.js`
 - `providers/streamflix.js`
 
@@ -105,5 +107,6 @@ Tracked upstream files:
 - `providers/hdhub4u.js`
 - `providers/hindmoviez.js`
 - `providers/movieblast.js`
+- `providers/moviebox.js`
 - `providers/moviesdrive.js`
 - `providers/streamflix.js`
