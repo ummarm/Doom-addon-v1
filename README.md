@@ -78,16 +78,16 @@ The stream endpoint shape is:
 - `4KHDHub`, `4khdhub-tv`, and `HDHub4u` prefer FSL-family links first, but fall
   back to the original available links if no FSL link exists.
 
-## Upstream monitoring
+## Doom-plug monitoring
 
 This repo includes a GitHub Actions workflow at
 `.github/workflows/upstream-sync.yml`.
 
-- It checks the upstream repo every day.
+- It checks `ummarm/Doom-plug` every day.
 - Real sync work only happens every 2 days, anchored from `2026-04-20`.
-- If one of the tracked upstream scrapers changes, the workflow updates the local
-  provider file, preserves Doom-addon's local patches, bumps the affected version
-  numbers in `providers.json`, bumps the Stremio `manifest.json` version, and
+- If Doom-plug's provider manifest or provider files change, the workflow updates
+  Doom-addon's provider files, retargets domain lookups to this repo's
+  `domains.json`, updates `providers.json`, `manifest.json`, and `package.json`, and
   commits the update directly to `main`.
 - You can also run it manually from the GitHub Actions tab with `force=true`.
 
@@ -100,7 +100,7 @@ Docker container current with GitHub:
 powershell.exe -ExecutionPolicy Bypass -File C:\server\Doom-addon\scripts\update-windows.ps1
 ```
 
-Tracked upstream files:
+Tracked Doom-plug provider files:
 
 - `providers/4khdhub.js`
 - `providers/4khdhub_tv.js`

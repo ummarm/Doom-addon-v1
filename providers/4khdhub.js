@@ -249,7 +249,7 @@ function inferLanguageLabel(text = "") {
 function buildDisplayMeta(sourceTitle = "", url = "", quality = "Auto", size = "", tech = "") {
   const lang = inferLanguageLabel(sourceTitle);
   const titleParts = [quality, lang, size, tech].filter(part => part && part !== "Auto");
-  
+
   return {
     displayName: `${PROVIDER_NAME} - ${lang}`,
     displayTitle: titleParts.join(" | ") || "Stream"
@@ -367,7 +367,7 @@ function collectEpisodeLinks($, pageUrl, season, episode) {
     });
   });
   if (directEpisodeLinks.length) return directEpisodeLinks;
-  
+
   const packLinks = [];
   $("div.download-item").each((_, item) => {
     const headerText = $(item).find("div.flex-1.text-left.font-semibold").text().trim();
@@ -438,7 +438,7 @@ function resolveHubcloud(url, sourceTitle, referer, quality) {
     const header = $("div.card-header").first().text().trim();
     const tech = cleanFileDetails(header);
     const foundQuality = quality !== "Auto" ? quality : parseQuality(header);
-    
+
     const streams = [];
     $("a.btn[href]").each((_, el) => {
       const link = fixUrl($(el).attr("href"), entryUrl);
@@ -449,8 +449,8 @@ function resolveHubcloud(url, sourceTitle, referer, quality) {
       if (text.includes("buzzserver")) subSource += " - BuzzServer";
       else if (text.includes("pixel")) subSource += " - Pixeldrain";
 
-      const finalUrl = (text.includes("pixel") && !link.includes("/api/file/")) 
-                       ? (link.split('/').pop() ? `${new URL(link).origin}/api/file/${link.split('/').pop()}?download` : link) 
+      const finalUrl = (text.includes("pixel") && !link.includes("/api/file/"))
+                       ? (link.split('/').pop() ? `${new URL(link).origin}/api/file/${link.split('/').pop()}?download` : link)
                        : link;
 
       streams.push(buildStream(subSource, finalUrl, foundQuality, { Referer: entryUrl }, size, tech));
@@ -490,7 +490,7 @@ function extractStreams(tmdbId, mediaType, season, episode) {
   return __async(this, null, function* () {
     const { trTitle, origTitle, shortTitle } = yield getTmdbTitle(tmdbId, mediaType);
     if (!trTitle && !origTitle) return [];
-    
+
     let contentUrl = yield searchContent(trTitle, mediaType);
     if (!contentUrl && origTitle && origTitle !== trTitle) contentUrl = yield searchContent(origTitle, mediaType);
     if (!contentUrl && shortTitle) contentUrl = yield searchContent(shortTitle, mediaType);
@@ -499,9 +499,9 @@ function extractStreams(tmdbId, mediaType, season, episode) {
     const html = yield fetchText(contentUrl);
     const $ = import_cheerio_without_node_native2.default.load(html);
     const isMoviePage = $("div.episodes-list").length === 0;
-    
-    let links = (mediaType === "movie" || isMoviePage) 
-                ? collectMovieLinks($, contentUrl) 
+
+    let links = (mediaType === "movie" || isMoviePage)
+                ? collectMovieLinks($, contentUrl)
                 : collectEpisodeLinks($, contentUrl, season, episode);
 
     if (!links.length) return [];
@@ -512,7 +512,7 @@ function extractStreams(tmdbId, mediaType, season, episode) {
     for (const linkItem of links) {
       const quality = parseQuality(linkItem.rawHtml || linkItem.label);
       const resolved = yield resolveLink(linkItem.url, linkItem.label || PROVIDER_NAME, contentUrl, quality);
-      
+
       for (const stream of resolved) {
         const pureUrl = stream.url.split('#')[0].toLowerCase();
         if (!resolvedUrls.has(pureUrl)) {

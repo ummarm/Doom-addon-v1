@@ -1,4 +1,4 @@
-name: Upstream scraper sync
+name: Doom-plug provider sync
 
 on:
   schedule:
@@ -31,11 +31,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Sync tracked upstream scrapers
+      - name: Sync tracked Doom-plug providers
         id: sync
         env:
           FORCE_SYNC: ${{ github.event.inputs.force || 'false' }}
-          PR_BODY_PATH: .git/upstream-sync-pr-body.md
         run: python scripts/sync_upstream.py
 
       - name: Commit synced providers
@@ -43,8 +42,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add manifest.json package.json providers.json providers/4khdhub.js providers/4khdhub_tv.js providers/hdhub4u.js providers/hindmoviez.js providers/movieblast.js providers/moviebox.js providers/moviesdrive.js providers/streamflix.js
+          git add -A manifest.json package.json providers.json providers
           if ! git diff --cached --quiet; then
-            git commit -m "chore: sync upstream Doom-addon scrapers"
+            git commit -m "chore: sync Doom-addon providers from Doom-plug"
             git push
           fi

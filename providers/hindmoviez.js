@@ -36,9 +36,9 @@ function hmProxyUrl(rawUrl) {
 // ─────────────────────────────────────────────────────────────────────────────
 function safeFetch(url) {
   return fetch(url, { headers: DEFAULT_HEADERS, redirect: 'follow' })
-    .then(function(res) { 
+    .then(function(res) {
       if (!res.ok) return null;
-      return res.text(); 
+      return res.text();
     })
     .catch(function() { return null; });
 }
@@ -72,7 +72,7 @@ function getStreams(tmdbId, type, season, episode) {
       for (var i = 1; i < sections.length; i++) {
         var chunk = sections[i];
         var mvMatch = chunk.match(/href="(https:\/\/mvlink\.site\/[^"]+)"/i);
-        
+
         if (mvMatch) {
           // Extract info from the H3 text (before the </h3>)
           var headingText = chunk.split('</h3>')[0];
@@ -122,5 +122,5 @@ function getStreams(tmdbId, type, season, episode) {
     });
 }
 
-if (typeof module !== 'undefined') { module.exports = { getStreams: getStreams }; } 
+if (typeof module !== 'undefined') { module.exports = { getStreams: getStreams }; }
 else { global.getStreams = getStreams; }
