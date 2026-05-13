@@ -1,13 +1,16 @@
 # Doom-addon
 
-Doom-addon is a Stremio stream add-on that wraps these eight providers from
-`D3adlyRocket/All-in-One-Nuvio`:
+Doom-addon is a Stremio stream add-on that wraps providers from the original
+upstream sources directly:
 
 - `4KHDHub`
 - `HDHub4u`
 - `4khdhub-tv`
+- `4KHDHub Yoruix`
+- `HDHub4u Murph`
 - `HindMoviez`
 - `MovieBlast`
+- `4KHDHub Murph`
 - `MovieBox`
 - `MoviesDrive`
 - `StreamFlix`
@@ -23,9 +26,12 @@ every enabled provider, merges the results, and returns Stremio stream objects.
 - `server.js` - HTTP server for Stremio
 - `providers/4khdhub.js`
 - `providers/4khdhub_tv.js`
+- `providers/4khdhub_yoruix.js`
 - `providers/hdhub4u.js`
+- `providers/hdhub4u_murph.js`
 - `providers/hindmoviez.js`
 - `providers/movieblast.js`
+- `providers/4khdhub_murph.js`
 - `providers/moviebox.js`
 - `providers/moviesdrive.js`
 - `providers/streamflix.js`
@@ -67,46 +73,53 @@ The stream endpoint shape is:
 
 ## Notes
 
-- The provider files were copied from the GPL-3.0 licensed upstream repo:
-  `https://github.com/D3adlyRocket/All-in-One-Nuvio`
+- Provider files sync directly from the original upstream sources:
+  `https://github.com/D3adlyRocket/All-in-One-Nuvio`,
+  `https://github.com/yoruix/nuvio-providers`, and
+  `https://badboysxs-morpheus.hf.space/manifest.json`.
 - If you keep redistributing these files, keep the original license terms and
   attribution in mind.
 - `4KHDHub`, `4khdhub-tv`, and `HDHub4u` read domain data from this repo's
   `domains.json`.
 - `HindMoviez` returns resolved direct URLs instead of relying on the upstream
   Cloudflare worker.
-- `4KHDHub`, `4khdhub-tv`, and `HDHub4u` prefer FSL-family links first, but fall
-  back to the original available links if no FSL link exists.
+- Provider results keep Doom-addon's working-and-seekable stream validation
+  before results are returned to Stremio.
 
-## Doom-plug sync
+## Original upstream sync
 
 This repo includes a GitHub Actions workflow at
 `.github/workflows/upstream-sync.yml`.
 
-- Automatic Doom-plug syncing is disabled.
-- Doom-addon will not update from Doom-plug unless you intentionally run the
-  workflow from the GitHub Actions tab or ask for a manual sync.
-- When run manually, the workflow updates Doom-addon's provider files, retargets
-  domain lookups to this repo's `domains.json`, updates `providers.json`,
-  `manifest.json`, and `package.json`, and commits the update directly to `main`.
+- Doom-addon no longer syncs from Doom-plug.
+- The workflow checks the original upstream sources automatically and applies
+  real sync work every 2 days, anchored from `2026-04-20`.
+- If a tracked upstream provider changes, the workflow updates Doom-addon's
+  provider file, retargets domain lookups to this repo's `domains.json`, updates
+  `providers.json`, `manifest.json`, and `package.json`, and commits the update
+  directly to `main`.
+- You can also run it manually from the GitHub Actions tab with `force=true`.
 
 ## Windows auto-update
 
 On the Windows host, schedule `scripts/update-windows.ps1` to keep the running
-Docker container current with GitHub. This only pulls committed Doom-addon
-changes; it does not sync from Doom-plug by itself.
+Docker container current with GitHub. This pulls committed Doom-addon changes
+after the GitHub workflow has synced and committed them.
 
 ```powershell
 powershell.exe -ExecutionPolicy Bypass -File C:\server\Doom-addon\scripts\update-windows.ps1
 ```
 
-Tracked Doom-plug provider files:
+Tracked upstream provider files:
 
 - `providers/4khdhub.js`
 - `providers/4khdhub_tv.js`
+- `providers/4khdhub_yoruix.js`
 - `providers/hdhub4u.js`
+- `providers/hdhub4u_murph.js`
 - `providers/hindmoviez.js`
 - `providers/movieblast.js`
+- `providers/4khdhub_murph.js`
 - `providers/moviebox.js`
 - `providers/moviesdrive.js`
 - `providers/streamflix.js`

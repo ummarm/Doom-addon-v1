@@ -1,8 +1,8 @@
-name: Doom-plug provider sync
+name: Original upstream provider sync
 
 on:
-  # Automatic Doom-plug syncing is disabled. Run this workflow manually only
-  # when you intentionally want Doom-addon updated from Doom-plug.
+  schedule:
+    - cron: "17 2 * * *"
   workflow_dispatch:
     inputs:
       force:
@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Sync tracked Doom-plug providers
+      - name: Sync tracked original upstream providers
         id: sync
         env:
           FORCE_SYNC: ${{ github.event.inputs.force || 'false' }}
@@ -44,6 +44,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A manifest.json package.json providers.json providers
           if ! git diff --cached --quiet; then
-            git commit -m "chore: sync Doom-addon providers from Doom-plug"
+            git commit -m "chore: sync Doom-addon providers from original upstreams"
             git push
           fi
