@@ -114,17 +114,6 @@ function looksLikeHls(url, contentType = "") {
     || normalizedType.includes("vnd.apple.mpegurl");
 }
 
-function looksLikeDirectMediaUrl(url) {
-  const normalized = String(url || "").toLowerCase();
-  if (!/^https?:\/\//i.test(normalized)) {
-    return false;
-  }
-  if (/\/login(?:\.php)?\b/.test(normalized) || /(?:action=logout|\/logout\b)/.test(normalized)) {
-    return false;
-  }
-  return /\.(?:mp4|mkv|m3u8|ts)(?:$|[?#])/i.test(normalized);
-}
-
 function looksLikeErrorDocument(contentType, sampleText = "") {
   const normalizedType = String(contentType || "").toLowerCase();
   const sample = String(sampleText || "").trim().slice(0, 256).toLowerCase();
@@ -143,16 +132,16 @@ function looksLikeErrorDocument(contentType, sampleText = "") {
 
 function responseProbeResult(response, url, sampleText = "") {
   if (!response || !response.ok) {
-    return { ok: false, hardFail: false };
+    return { ok: false };
   }
 
   const contentType = response.headers.get("content-type") || "";
-  if (looksLikeErrorDocument(contentType, sampleText)) {
-    return { ok: false, hardFail: true };
+  if (looksLikeHls(url, contentType)) {
+    return { ok: !sampleText || sampleText.includes("#EXTM3U") };
   }
 
-  if (looksLikeHls(url, contentType)) {
-    return { ok: !sampleText || sampleText.includes("#EXTM3U"), hardFail: !!sampleText && !sampleText.includes("#EXTM3U") };
+  if (looksLikeErrorDocument(contentType, sampleText)) {
+    return { ok: false };
   }
 
   const acceptRanges = response.headers.get("accept-ranges") || "";
@@ -160,8 +149,7 @@ function responseProbeResult(response, url, sampleText = "") {
   return {
     ok: response.status === 206
     || /bytes/i.test(acceptRanges)
-    || /^bytes\s+/i.test(contentRange),
-    hardFail: false
+    || /^bytes\s+/i.test(contentRange)
   };
 }
 
@@ -208,7 +196,7 @@ async function probeStream(stream) {
   );
   const sampleText = await responseSampleText(getResponse);
   const getProbe = responseProbeResult(getResponse, stream.url, sampleText);
-  if (getProbe.ok || getProbe.hardFail) {
+  if (getProbe.ok) {
     return getProbe;
   }
 
@@ -234,17 +222,13 @@ async function filterPlayableStreams(streams) {
       nextIndex += 1;
       try {
         const probe = await probeStream(stream);
-        if (probe.ok || (!probe.hardFail && looksLikeDirectMediaUrl(stream.url))) {
+        if (probe.ok) {
           filtered.push(stream);
         } else {
           console.log(`[Stream probe] Rejected unplayable source: ${stream.name}`);
         }
       } catch (error) {
-        if (looksLikeDirectMediaUrl(stream.url)) {
-          filtered.push(stream);
-        } else {
-          console.log(`[Stream probe] Rejected ${stream.name}: ${error.message || error}`);
-        }
+        console.log(`[Stream probe] Rejected ${stream.name}: ${error.message || error}`);
       }
     }
   }
