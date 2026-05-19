@@ -181,7 +181,7 @@ function looksLikeMediaBytes(url, contentType, sampleBuffer) {
   return !expectsKnownContainer && normalizedType.startsWith("video/");
 }
 
-function responseProbeResult(response, url, sample = {}) {
+function responseProbeResult(response, url, sample = {}, options = {}) {
   if (!response || !response.ok) {
     return { ok: false };
   }
@@ -201,11 +201,11 @@ function responseProbeResult(response, url, sample = {}) {
   const contentRange = response.headers.get("content-range") || "";
   const contentLength = Number(response.headers.get("content-length") || 0);
   const mediaBytesOk = looksLikeMediaBytes(url, contentType, sampleBuffer);
+  const seekable = response.status === 206
+    || /bytes/i.test(acceptRanges)
+    || /^bytes\s+/i.test(contentRange);
   return {
-    ok: mediaBytesOk && (response.status === 200 && contentLength > 0
-      || response.status === 206
-      || /bytes/i.test(acceptRanges)
-      || /^bytes\s+/i.test(contentRange))
+    ok: mediaBytesOk && (options.requireSeekable ? seekable : (response.status === 200 && contentLength > 0) || seekable)
   };
 }
 
@@ -239,6 +239,7 @@ async function probeStream(stream) {
     return { ok: false };
   }
 
+  const requireSeekable = stream.behaviorHints && stream.behaviorHints.doomProviderId === "hdhub4u_yoruix";
   const headers = streamRequestHeaders(stream);
   const isHls = looksLikeHls(stream.url);
   const rangedHeaders = Object.assign({}, headers);
@@ -256,7 +257,7 @@ async function probeStream(stream) {
     `${stream.name} probe`
   );
   const sample = await responseSample(getResponse);
-  const getProbe = responseProbeResult(getResponse, stream.url, sample);
+  const getProbe = responseProbeResult(getResponse, stream.url, sample, { requireSeekable });
   if (getProbe.ok) {
     return getProbe;
   }
@@ -270,7 +271,7 @@ async function probeStream(stream) {
     STREAM_PROBE_TIMEOUT_MS,
     `${stream.name} head probe`
   );
-  return responseProbeResult(headResponse, stream.url);
+  return responseProbeResult(headResponse, stream.url, {}, { requireSeekable });
 }
 
 async function filterPlayableStreams(streams) {
@@ -525,6 +526,7 @@ function normalizeStream(rawStream, provider) {
   if (!behaviorHints.bingeGroup) {
     behaviorHints.bingeGroup = `doomp-${provider.id}-${String(quality || "auto").toLowerCase()}`;
   }
+  behaviorHints.doomProviderId = provider.id;
   if (!looksWebReady(targetUrl) || requestHeaders) {
     behaviorHints.notWebReady = true;
   }
