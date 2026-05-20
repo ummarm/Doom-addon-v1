@@ -59,6 +59,13 @@ You can change the port with:
 PORT=8080 npm start
 ```
 
+Stream results are cached briefly in memory to make TV retries and repeated
+opens faster. The default cache TTL is 10 minutes and can be changed with:
+
+```sh
+STREAM_CACHE_TTL_MS=600000 npm start
+```
+
 Flix-Streams wrappers use the configured Flix-Streams manifest URL. The checked-in
 default can be overridden if the token changes:
 

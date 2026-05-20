@@ -8,6 +8,8 @@ const TMDB_API_KEY = process.env.TMDB_API_KEY || "439c478a771f35c05022f9feabcca0
 const DEFAULT_TIMEOUT_MS = Number(process.env.PROVIDER_TIMEOUT_MS || 45000);
 const STREAM_PROBE_TIMEOUT_MS = Number(process.env.STREAM_PROBE_TIMEOUT_MS || 8000);
 const STREAM_PROBE_CONCURRENCY = Number(process.env.STREAM_PROBE_CONCURRENCY || 6);
+const STREAM_CACHE_TTL_MS = Number(process.env.STREAM_CACHE_TTL_MS || 10 * 60 * 1000);
+const STREAM_CACHE_MAX_ENTRIES = Number(process.env.STREAM_CACHE_MAX_ENTRIES || 100);
 
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "manifest.json"), "utf8"));
 const providerRegistry = JSON.parse(fs.readFileSync(path.join(ROOT, "providers.json"), "utf8"));
@@ -20,6 +22,8 @@ const providerEntries = providerRegistry.scrapers
     modulePath: path.join(ROOT, provider.filename),
     getStreams: null
   }));
+const streamCache = new Map();
+const streamInflight = new Map();
 
 function loadProvider(provider) {
   if (!provider.getStreams) {
@@ -31,6 +35,38 @@ function loadProvider(provider) {
   }
 
   return provider.getStreams;
+}
+
+function streamCacheKey(type, id) {
+  return `${type}:${id}`;
+}
+
+function cachedStreams(key) {
+  const entry = streamCache.get(key);
+  if (!entry) {
+    return null;
+  }
+  if (Date.now() - entry.timestamp > STREAM_CACHE_TTL_MS) {
+    streamCache.delete(key);
+    return null;
+  }
+  return entry.streams.slice();
+}
+
+function rememberStreams(key, streams) {
+  if (!Array.isArray(streams) || streams.length === 0 || STREAM_CACHE_TTL_MS <= 0) {
+    return;
+  }
+
+  streamCache.set(key, {
+    timestamp: Date.now(),
+    streams: streams.slice()
+  });
+
+  while (streamCache.size > STREAM_CACHE_MAX_ENTRIES) {
+    const oldestKey = streamCache.keys().next().value;
+    streamCache.delete(oldestKey);
+  }
 }
 
 function parseStremioId(type, id) {
@@ -573,7 +609,7 @@ async function withTimeout(promise, ms, label) {
   }
 }
 
-async function getStreams(type, id) {
+async function buildStreams(type, id) {
   const parsed = parseStremioId(type, id);
   if (!parsed) {
     return [];
@@ -627,6 +663,32 @@ async function getStreams(type, id) {
     const rankB = qualityRank(`${b.name} ${b.description}`);
     return rankB - rankA;
   });
+}
+
+async function getStreams(type, id) {
+  const key = streamCacheKey(type, id);
+  const cached = cachedStreams(key);
+  if (cached) {
+    console.log(`[Stream cache] Hit for ${key} (${cached.length} streams)`);
+    return cached;
+  }
+
+  if (streamInflight.has(key)) {
+    console.log(`[Stream cache] Joining in-flight request for ${key}`);
+    return streamInflight.get(key);
+  }
+
+  const request = buildStreams(type, id)
+    .then((streams) => {
+      rememberStreams(key, streams);
+      return streams;
+    })
+    .finally(() => {
+      streamInflight.delete(key);
+    });
+
+  streamInflight.set(key, request);
+  return request;
 }
 
 module.exports = {
