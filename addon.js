@@ -529,7 +529,8 @@ const MATCH_STOP_WORDS = new Set([
 const STREAM_DETAIL_IGNORE_WORDS = new Set([
   "aac", "ac3", "amzn", "atmos", "audio", "avc", "bluray", "brrip", "cam", "ddp", "dd", "download", "darth", "dts",
   "dual", "dv", "dvd", "dvdrip", "eac3", "english", "esub", "file", "gb", "h264", "h265", "hd", "hdr", "hdrip",
-  "hevc", "hindi", "hubcloud", "kbps", "mb", "multi", "remux", "rip", "server", "stream", "truehd", "vader",
+  "hevc", "hindi", "hubcloud", "kbps", "mb", "mkv", "mkvcinemas", "cinemas", "moviebox", "multi", "original",
+  "remux", "rip", "server", "stream", "truehd", "vader",
   "web", "webdl", "webrip", "x264", "x265"
 ]);
 
@@ -556,6 +557,12 @@ function streamMediaEvidence(stream) {
     stream.title,
     stream.description
   ].filter(Boolean).join(" ");
+}
+
+function requiredTitleMatches(expectedTokenCount) {
+  if (expectedTokenCount <= 1) return expectedTokenCount;
+  if (expectedTokenCount <= 3) return 2;
+  return Math.min(expectedTokenCount, Math.ceil(expectedTokenCount * 0.5));
 }
 
 function hasExpectedEpisode(text, parsed) {
@@ -610,12 +617,13 @@ function matchesRequestedMedia(stream, mediaInfo, parsed) {
   const normalizedEvidence = normalizeMatchText(evidence);
   const evidenceTokens = streamEvidenceTokens(evidence);
   const matchedTokens = expectedTokens.filter((token) => normalizedEvidence.includes(token));
+  const requiredMatches = requiredTitleMatches(expectedTokens.length);
 
-  if (matchedTokens.length > 0) {
+  if (matchedTokens.length >= requiredMatches) {
     return true;
   }
 
-  if (mediaInfo.year && normalizedEvidence.includes(mediaInfo.year)) {
+  if (matchedTokens.length > 0 && mediaInfo.year && normalizedEvidence.includes(mediaInfo.year)) {
     return true;
   }
 
@@ -984,7 +992,19 @@ async function withTimeout(promise, ms, label) {
   }
 }
 
-async function collectProviderStreams(provider, parsed, tmdbId) {
+function enrichTrustedProviderStream(rawStream, provider, mediaInfo) {
+  if (!rawStream || provider.id !== "moviebox" || !mediaInfo || !mediaInfo.title) {
+    return rawStream;
+  }
+
+  const year = mediaInfo.year ? ` ${mediaInfo.year}` : "";
+  const quality = rawStream.quality ? ` ${rawStream.quality}` : "";
+  return Object.assign({}, rawStream, {
+    fileName: rawStream.fileName || rawStream.filename || `${mediaInfo.title}${year}${quality}`.trim()
+  });
+}
+
+async function collectProviderStreams(provider, parsed, tmdbId, mediaInfo) {
   const providerGetStreams = loadProvider(provider);
   const rawStreams = await withTimeout(
     Promise.resolve(providerGetStreams(tmdbId, parsed.mediaType, parsed.season, parsed.episode)),
@@ -993,14 +1013,15 @@ async function collectProviderStreams(provider, parsed, tmdbId) {
   );
 
   return (Array.isArray(rawStreams) ? rawStreams : [])
+    .map((stream) => enrichTrustedProviderStream(stream, provider, mediaInfo))
     .map((stream) => normalizeStream(stream, provider))
     .filter(Boolean);
 }
 
-function startProviderCollection(parsed, tmdbId) {
+function startProviderCollection(parsed, tmdbId, mediaInfo) {
   const results = [];
   const tasks = providerEntries.map((provider, index) => (
-    collectProviderStreams(provider, parsed, tmdbId)
+    collectProviderStreams(provider, parsed, tmdbId, mediaInfo)
       .then((value) => {
         results[index] = { status: "fulfilled", value };
       })
@@ -1085,7 +1106,7 @@ async function startStreamBuild(type, id) {
     return null;
   }
 
-  return Object.assign(startProviderCollection(parsed, tmdbId), { parsed, mediaInfo });
+  return Object.assign(startProviderCollection(parsed, tmdbId, mediaInfo), { parsed, mediaInfo });
 }
 
 async function getStreams(type, id) {
