@@ -572,8 +572,8 @@ const MATCH_STOP_WORDS = new Set([
 const STREAM_DETAIL_IGNORE_WORDS = new Set([
   "aac", "ac3", "amzn", "atmos", "audio", "avc", "bluray", "brrip", "cam", "ddp", "dd", "download", "darth", "dts",
   "dual", "dv", "dvd", "dvdrip", "eac3", "english", "esub", "file", "gb", "h264", "h265", "hd", "hdr", "hdrip",
-  "hevc", "hindi", "hubcloud", "kbps", "mb", "mkv", "mkvcinemas", "cinemas", "moviebox", "multi", "original",
-  "remux", "rip", "server", "stream", "truehd", "vader",
+  "hdhub4u", "hevc", "hindi", "hubcloud", "kbps", "mb", "mkv", "mkvcinemas", "cinemas", "moviebox", "multi",
+  "original", "punjabi", "remux", "rip", "server", "stream", "tamil", "telugu", "truehd", "vader",
   "web", "webdl", "webrip", "x264", "x265"
 ]);
 
@@ -600,6 +600,19 @@ function streamMediaEvidence(stream) {
     stream.title,
     stream.description
   ].filter(Boolean).join(" ");
+}
+
+function textYears(value) {
+  return Array.from(new Set(String(value || "").match(/\b(?:19|20|21)\d{2}\b/g) || []));
+}
+
+function hasDifferentMovieYear(evidence, mediaInfo, parsed) {
+  if (!parsed || parsed.type !== "movie" || !mediaInfo || !mediaInfo.year) {
+    return false;
+  }
+
+  const years = textYears(evidence);
+  return years.length > 0 && !years.includes(mediaInfo.year);
 }
 
 function requiredTitleMatches(expectedTokenCount) {
@@ -659,8 +672,23 @@ function matchesRequestedMedia(stream, mediaInfo, parsed) {
 
   const normalizedEvidence = normalizeMatchText(evidence);
   const evidenceTokens = streamEvidenceTokens(evidence);
+  if (hasDifferentMovieYear(normalizedEvidence, mediaInfo, parsed)) {
+    return false;
+  }
+
   const matchedTokens = expectedTokens.filter((token) => normalizedEvidence.includes(token));
   const requiredMatches = requiredTitleMatches(expectedTokens.length);
+
+  if (expectedTokens.length === 1) {
+    const token = expectedTokens[0];
+    const hasExactToken = normalizedEvidence.split(" ").includes(token);
+    if (!hasExactToken) {
+      return false;
+    }
+
+    const extraTitleTokens = evidenceTokens.filter((evidenceToken) => evidenceToken !== token);
+    return extraTitleTokens.length === 0;
+  }
 
   if (matchedTokens.length >= requiredMatches) {
     return true;
