@@ -1258,7 +1258,8 @@ async function getStreams(type, id, options = {}) {
         logFailures: true,
         mediaInfo: state.mediaInfo,
         parsed: state.parsed,
-        providerEntries: entries
+        providerEntries: entries,
+        probeOnlyRequired: true
       });
     })
     .then((streams) => {
