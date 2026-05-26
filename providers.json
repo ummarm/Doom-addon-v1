@@ -1,6 +1,6 @@
 {
   "name": "Doom-addon",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "scrapers": [
     {
       "id": "4khdhub",
@@ -299,7 +299,7 @@
       "id": "moviesdrive",
       "name": "MoviesDrive",
       "description": "MoviesDrive - Movies and TV shows with multiple streaming servers",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
@@ -313,6 +313,52 @@
         "m3u8"
       ],
       "logo": "https://i.postimg.cc/bwDbhq9q/moviesdrive.png",
+      "contentLanguage": [
+        "en",
+        "hi"
+      ]
+    },
+    {
+      "id": "netmirror",
+      "name": "NetMirror",
+      "description": "NetMirror streams synced from D3adlyRocket/All-in-One-Nuvio",
+      "version": "1.0.1",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/netmirror.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "mkv",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/9QZLkH7f/umbrella.png",
+      "contentLanguage": [
+        "en",
+        "hi"
+      ]
+    },
+    {
+      "id": "peachify",
+      "name": "Peachify",
+      "description": "Peachify streams synced from D3adlyRocket/All-in-One-Nuvio, filtered to Hindi and English audio",
+      "version": "1.0.1",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/peachify.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "mkv",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/9QZLkH7f/umbrella.png",
       "contentLanguage": [
         "en",
         "hi"

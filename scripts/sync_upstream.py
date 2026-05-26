@@ -327,6 +327,8 @@ PROVIDERS = (
     Provider("hindmoviez", ("providers/hindmoviez.js",), "providers/hindmoviez.js", ("hindmoviez",)),
     Provider("movieblast", ("providers/movieblast.js",), "providers/movieblast.js", ("movieblast",)),
     Provider("moviebox", ("providers/moviebox.js",), "providers/moviebox.js", ("moviebox",)),
+    Provider("netmirror", ("providers/netmirror.js",), "providers/netmirror.js", ("netmirror",)),
+    Provider("peachify", ("providers/peachify.js",), "providers/peachify.js", ("peachify",)),
     Provider("4khdhub_yoruix", ("providers/4khdhub.js",), "providers/4khdhub_yoruix.js", ("4khdhub", "hubcloud", "yoruix"), YORUIX_UPSTREAM_RAW_BASE, YORUIX_UPSTREAM_TREE_API),
     Provider("hdhub4u_yoruix", ("providers/hdhub4u.js", "src/hdhub4u/index.js"), "providers/hdhub4u_yoruix.js", ("hdhub4u", "yoruix"), YORUIX_UPSTREAM_RAW_BASE, YORUIX_UPSTREAM_TREE_API),
     Provider("moviesdrive", ("src/providers/moviesdrive.js", "providers/moviesdrive.js"), "providers/moviesdrive.js", ("moviesdrive",)),
@@ -477,7 +479,10 @@ def patch_moviesdrive_domain_source(text: str) -> str:
             raise RuntimeError("Could not adapt MoviesDrive domain reader to Doom-addon domains.json")
         return updated.replace(old_block, new_block, 1)
 
-    return patch_domain_source(text)
+    if "DOMAINS_URL" in text:
+        return patch_domain_source(text)
+
+    return text
 
 
 def patch_yoruix_hdhub4u_source(text: str) -> str:

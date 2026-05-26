@@ -15,6 +15,8 @@ upstream sources directly:
 - `4KHDHub Murph`
 - `MovieBox`
 - `MoviesDrive`
+- `NetMirror`
+- `Peachify`
 
 It exposes a Stremio-compatible `manifest.json` and a stream endpoint that calls
 every enabled provider, merges the results, and returns Stremio stream objects.
@@ -38,6 +40,8 @@ every enabled provider, merges the results, and returns Stremio stream objects.
 - `providers/4khdhub_murph.js`
 - `providers/moviebox.js`
 - `providers/moviesdrive.js`
+- `providers/netmirror.js`
+- `providers/peachify.js`
 - `providers/streamflix.js`
 
 ## Run locally
@@ -128,6 +132,9 @@ The stream endpoint shape is:
   those Flixnest links are not working reliably.
 - `StreamFlix` is kept in the repo but currently disabled and paused from
   upstream sync.
+- `NetMirror`, `Peachify`, `MovieBox`, and `MoviesDrive` are synced from
+  `D3adlyRocket/All-in-One-Nuvio`. Peachify results are filtered to Hindi and
+  English audio only.
 - Provider results keep Doom-addon's working-and-seekable stream validation
   before results are returned to Stremio.
 - `Umbrella M`, `Umbrella Y`, `Umbrella D`, and `Umbrella F` are separate
@@ -174,3 +181,5 @@ Tracked upstream provider files:
 - `providers/4khdhub_murph.js`
 - `providers/moviebox.js`
 - `providers/moviesdrive.js`
+- `providers/netmirror.js`
+- `providers/peachify.js`

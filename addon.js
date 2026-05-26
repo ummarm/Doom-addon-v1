@@ -43,6 +43,8 @@ const addonGroups = {
       "movieblast",
       "moviebox",
       "moviesdrive",
+      "netmirror",
+      "peachify",
       "streamflix"
     ]
   },
@@ -357,7 +359,7 @@ async function responseSample(response) {
 }
 
 function streamRequiresProbe(stream) {
-  return Boolean(stream.behaviorHints && stream.behaviorHints.doomProviderId === "hdhub4u_yoruix");
+  return Boolean(stream.behaviorHints && ["hdhub4u", "hdhub4u_yoruix"].includes(stream.behaviorHints.doomProviderId));
 }
 
 function isFastAcceptableStream(stream) {
@@ -462,6 +464,8 @@ const UMBRELLA_PROVIDER_CODES = {
   "movieblast": "MBL",
   "moviebox": "MB",
   "moviesdrive": "MD",
+  "netmirror": "NM",
+  "peachify": "PF",
   "streamflix": "SF"
 };
 const DETAIL_PROVIDER_CODES = Object.assign({}, UMBRELLA_PROVIDER_CODES, {
@@ -483,6 +487,8 @@ const SOURCE_DETAIL_NAMES = {
   "movieblast": "Darth Vader",
   "moviebox": "Darth Vader",
   "moviesdrive": "Darth Vader",
+  "netmirror": "Darth Vader",
+  "peachify": "Darth Vader",
   "streamflix": "Darth Vader"
 };
 
@@ -990,17 +996,23 @@ function cleanStreamName(rawStream, mediaInfo) {
 }
 
 function shouldKeepProviderStream(rawStream, provider) {
-  if (provider.id !== "movieblast") {
-    return true;
-  }
-
-  return /\bhindi\b/i.test([
+  const text = [
     rawStream.name,
     rawStream.title,
     rawStream.description,
     rawStream.quality,
     rawStream.language
-  ].filter(Boolean).join(" "));
+  ].filter(Boolean).join(" ");
+
+  if (provider.id === "peachify") {
+    return /\b(?:hindi|english)\b/i.test(text);
+  }
+
+  if (provider.id !== "movieblast") {
+    return true;
+  }
+
+  return /\bhindi\b/i.test(text);
 }
 
 function nameWithQuality(name, rawStream) {
