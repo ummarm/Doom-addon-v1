@@ -334,7 +334,7 @@ PROVIDERS = (
     Provider("moviesdrive", ("src/providers/moviesdrive.js", "providers/moviesdrive.js"), "providers/moviesdrive.js", ("moviesdrive",)),
     Provider("streamflix", ("providers/streamflix.js",), "providers/streamflix.js", ("streamflix",)),
 )
-MURPH_WRAPPER_IDS = {"4khdhub_murph", "hdhub4u_murph"}
+MURPH_WRAPPER_IDS = {"4khdhub_murph", "hdhub4u_murph", "moviebox_murph", "movies4u_murph"}
 PAUSED_UPSTREAM_PROVIDER_IDS = {"streamflix"}
 
 

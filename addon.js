@@ -27,7 +27,7 @@ const providerEntries = providerRegistry.scrapers
 const addonGroups = {
   murph: {
     name: "Umbrella M",
-    providerIds: ["4khdhub_murph", "hdhub4u_murph"]
+    providerIds: ["4khdhub_murph", "hdhub4u_murph", "moviebox_murph", "movies4u_murph"]
   },
   yoruix: {
     name: "Umbrella Y",
@@ -463,7 +463,9 @@ const UMBRELLA_PROVIDER_CODES = {
   "hindmoviez": "HM",
   "movieblast": "MBL",
   "moviebox": "MB",
+  "moviebox_murph": "MB M",
   "moviesdrive": "MD",
+  "movies4u_murph": "M4U M",
   "netmirror": "NM",
   "peachify": "PF",
   "streamflix": "SF"
@@ -486,7 +488,9 @@ const SOURCE_DETAIL_NAMES = {
   "hindmoviez": "Darth Vader",
   "movieblast": "Darth Vader",
   "moviebox": "Darth Vader",
+  "moviebox_murph": "Murph Streams",
   "moviesdrive": "Darth Vader",
+  "movies4u_murph": "Murph Streams",
   "netmirror": "Darth Vader",
   "peachify": "Darth Vader",
   "streamflix": "Darth Vader"
@@ -1004,7 +1008,7 @@ function shouldKeepProviderStream(rawStream, provider) {
     rawStream.language
   ].filter(Boolean).join(" ");
 
-  if (provider.id === "peachify") {
+  if (provider.id === "peachify" || provider.id === "moviebox_murph") {
     return /\b(?:hindi|english)\b/i.test(text);
   }
 
@@ -1100,7 +1104,8 @@ async function withTimeout(promise, ms, label) {
 }
 
 function enrichTrustedProviderStream(rawStream, provider, mediaInfo) {
-  if (!rawStream || provider.id !== "moviebox" || !mediaInfo || !mediaInfo.title) {
+  const trustedTitleProviders = new Set(["moviebox", "movies4u_murph"]);
+  if (!rawStream || !trustedTitleProviders.has(provider.id) || !mediaInfo || !mediaInfo.title) {
     return rawStream;
   }
 
