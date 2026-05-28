@@ -69,12 +69,16 @@ const addonManifests = Object.fromEntries(
     Object.assign({}, manifest, {
       id: `${manifest.id}.${slug}`,
       name: group.name,
-      description: `${group.name} provider group for Doom-addon. Uses the same Umbrella formatting, filtering, sorting, and playable checks as the main add-on.`
+      description: slug === "mediafusion"
+        ? `${group.name} provider group for Doom-addon. Passes MediaFusion streams through unchanged except Hindi-first quality and size sorting.`
+        : `${group.name} provider group for Doom-addon. Uses the same Umbrella formatting, filtering, sorting, and playable checks as the main add-on.`
     })
   ])
 );
 const streamCache = new Map();
 const streamInflight = new Map();
+const passthroughProviderIds = new Set(["mediafusion"]);
+const passthroughStreams = new WeakSet();
 
 function loadProvider(provider) {
   if (!provider.getStreams) {
@@ -86,6 +90,21 @@ function loadProvider(provider) {
   }
 
   return provider.getStreams;
+}
+
+function isPassthroughProvider(provider) {
+  return Boolean(provider && passthroughProviderIds.has(provider.id));
+}
+
+function markPassthroughStream(stream) {
+  if (stream && typeof stream === "object") {
+    passthroughStreams.add(stream);
+  }
+  return stream;
+}
+
+function isPassthroughStream(stream) {
+  return Boolean(stream && typeof stream === "object" && passthroughStreams.has(stream));
 }
 
 function streamCacheKey(type, id, scope = "main") {
@@ -541,6 +560,21 @@ function streamSizeBytes(stream) {
     || parseSizeToBytes(stream.description)
     || parseSizeToBytes(stream.title)
     || parseSizeToBytes(stream.name);
+}
+
+function hasHindiLanguage(stream) {
+  const behaviorHints = stream && stream.behaviorHints;
+  const text = [
+    stream && stream.name,
+    stream && stream.title,
+    stream && stream.description,
+    stream && stream.language,
+    stream && stream.languages,
+    behaviorHints && behaviorHints.filename,
+    behaviorHints && behaviorHints.bingeGroup
+  ].filter(Boolean).join(" ");
+
+  return /\b(?:hindi|hin)\b/i.test(text);
 }
 
 function formatBytes(bytes) {
@@ -1133,6 +1167,12 @@ async function collectProviderStreams(provider, parsed, tmdbId, mediaInfo) {
     provider.name
   );
 
+  if (isPassthroughProvider(provider)) {
+    return (Array.isArray(rawStreams) ? rawStreams : [])
+      .filter((stream) => stream && stream.url)
+      .map(markPassthroughStream);
+  }
+
   return (Array.isArray(rawStreams) ? rawStreams : [])
     .map((stream) => enrichTrustedProviderStream(stream, provider, mediaInfo))
     .map((stream) => normalizeStream(stream, provider, mediaInfo))
@@ -1185,6 +1225,12 @@ function filterRequestedMediaStreams(streams, mediaInfo, parsed) {
 
 function sortStreams(streams) {
   return streams.sort((a, b) => {
+    const hindiA = isPassthroughStream(a) && hasHindiLanguage(a);
+    const hindiB = isPassthroughStream(b) && hasHindiLanguage(b);
+    if (hindiA !== hindiB) {
+      return hindiB ? 1 : -1;
+    }
+
     const rankA = qualityRank(`${a.name} ${a.description}`);
     const rankB = qualityRank(`${b.name} ${b.description}`);
     if (rankA !== rankB) {
@@ -1208,12 +1254,14 @@ async function finalizeStreams(providerResults, options = {}) {
     logFailures: options.logFailures,
     providerEntries: options.providerEntries
   });
-  const mediaMatchedStreams = filterRequestedMediaStreams(streams, options.mediaInfo, options.parsed);
+  const passthrough = streams.filter(isPassthroughStream);
+  const regularStreams = streams.filter((stream) => !isPassthroughStream(stream));
+  const mediaMatchedStreams = filterRequestedMediaStreams(regularStreams, options.mediaInfo, options.parsed);
   const playableStreams = await filterPlayableStreams(dedupeStreams(mediaMatchedStreams), {
     probeOnlyRequired: options.probeOnlyRequired,
     probeTimeoutMs: options.probeTimeoutMs
   });
-  return sortStreams(playableStreams);
+  return sortStreams([...playableStreams, ...passthrough]);
 }
 
 async function startStreamBuild(type, id, entries) {

@@ -101,6 +101,10 @@ can be overridden if the configured add-on URL changes:
 MEDIAFUSION_MANIFEST_URL=https://mediafusion.elfhosted.com/<your-id>/manifest.json npm start
 ```
 
+MediaFusion streams are passed through without Umbrella card formatting,
+title-matching, playable probes, or de-duplication. Only stream order is changed:
+Hindi-language MediaFusion results first, then quality and size sorting.
+
 ## Deploy
 
 This add-on is dynamic, so the raw GitHub URL is no longer enough for Stremio.

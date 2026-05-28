@@ -43,32 +43,10 @@ async function fetchMediaFusionStreams(tmdbId, mediaType, season, episode) {
   return Array.isArray(payload.streams) ? payload.streams : [];
 }
 
-function normalizeMediaFusionStream(stream) {
-  if (!stream || !stream.url) {
-    return null;
-  }
-
-  const behaviorHints = stream.behaviorHints || {};
-  const filename = stream.filename || stream.fileName || behaviorHints.filename || stream.name;
-  return {
-    name: stream.name || filename || PROVIDER_NAME,
-    title: stream.title || stream.description || stream.name || filename || PROVIDER_NAME,
-    description: stream.description || stream.title || stream.name || filename || PROVIDER_NAME,
-    url: stream.url,
-    quality: stream.quality,
-    size: stream.size,
-    videoSize: stream.videoSize || behaviorHints.videoSize,
-    behaviorHints,
-    headers: stream.headers,
-    filename,
-    fileName: filename
-  };
-}
-
 async function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) {
   try {
     const streams = await fetchMediaFusionStreams(tmdbId, mediaType, season, episode);
-    return streams.map(normalizeMediaFusionStream).filter(Boolean);
+    return streams.filter((stream) => stream && stream.url);
   } catch (error) {
     console.error(`[${PROVIDER_NAME}] ${error.message || error}`);
     return [];
