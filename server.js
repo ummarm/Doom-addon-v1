@@ -89,6 +89,7 @@ const server = http.createServer(async (request, response) => {
           `Umbrella Y: ${url.origin}/addons/yoruix/manifest.json`,
           `Umbrella D: ${url.origin}/addons/d3adlyrocket/manifest.json`,
           `Umbrella F: ${url.origin}/addons/flixnest/manifest.json`,
+          `Umbrella MF: ${url.origin}/addons/mediafusion/manifest.json`,
           ""
         ].join("\n")
       );

@@ -94,6 +94,13 @@ default can be overridden if the token changes:
 FLIX_STREAMS_MANIFEST_URL=https://flixnest.app/flix-streams/u/<token>/manifest.json npm start
 ```
 
+MediaFusion uses the configured MediaFusion manifest URL. The checked-in default
+can be overridden if the configured add-on URL changes:
+
+```sh
+MEDIAFUSION_MANIFEST_URL=https://mediafusion.elfhosted.com/<your-id>/manifest.json npm start
+```
+
 ## Deploy
 
 This add-on is dynamic, so the raw GitHub URL is no longer enough for Stremio.

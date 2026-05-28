@@ -51,6 +51,10 @@ const addonGroups = {
   flixnest: {
     name: "Umbrella F",
     providerIds: ["flix_streams_emby", "flix_streams_mkvcinemas", "flix_streams_vegamovies"]
+  },
+  mediafusion: {
+    name: "Umbrella MF",
+    providerIds: ["mediafusion"]
   }
 };
 const addonGroupEntries = Object.fromEntries(
@@ -460,6 +464,7 @@ const UMBRELLA_PROVIDER_CODES = {
   "flix_streams_emby": "EMB",
   "flix_streams_mkvcinemas": "MKV",
   "flix_streams_vegamovies": "VG",
+  "mediafusion": "MF",
   "hindmoviez": "HM",
   "movieblast": "MBL",
   "moviebox": "MB",
@@ -485,6 +490,7 @@ const SOURCE_DETAIL_NAMES = {
   "flix_streams_emby": "Darth Vader",
   "flix_streams_mkvcinemas": "Darth Vader",
   "flix_streams_vegamovies": "Darth Vader",
+  "mediafusion": "Darth Vader",
   "hindmoviez": "Darth Vader",
   "movieblast": "Darth Vader",
   "moviebox": "Darth Vader",
