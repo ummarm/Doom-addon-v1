@@ -1176,6 +1176,12 @@ function filterRequestedMediaStreams(streams, mediaInfo, parsed) {
 
 function sortStreams(streams) {
   return streams.sort((a, b) => {
+    const rankA = qualityRank(`${a.name} ${a.description}`);
+    const rankB = qualityRank(`${b.name} ${b.description}`);
+    if (rankA !== rankB) {
+      return rankB - rankA;
+    }
+
     const sizeA = streamSizeBytes(a);
     const sizeB = streamSizeBytes(b);
     if (sizeA && sizeB && sizeA !== sizeB) {
@@ -1184,9 +1190,7 @@ function sortStreams(streams) {
     if (sizeA && !sizeB) return -1;
     if (!sizeA && sizeB) return 1;
 
-    const rankA = qualityRank(`${a.name} ${a.description}`);
-    const rankB = qualityRank(`${b.name} ${b.description}`);
-    return rankB - rankA;
+    return 0;
   });
 }
 

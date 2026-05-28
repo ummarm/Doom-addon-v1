@@ -440,8 +440,8 @@ def candidate_upstream_paths(provider: Provider, upstream_tree_paths: list[str])
 
 def patch_domain_source(text: str) -> str:
     updated, count = re.subn(
-        r"""(?:var|const|let)\s+DOMAINS_URL\s*=\s*["'][^"']+["'];""",
-        f'var DOMAINS_URL = "{ADDON_DOMAINS_URL}";',
+        r"""DOMAINS_URL\s*=\s*(?:"[^"]+"|'[^']+'|_0x[a-fA-F0-9]+\([^)]*\))""",
+        f'DOMAINS_URL = "{ADDON_DOMAINS_URL}"',
         text,
         count=1,
     )
@@ -453,8 +453,8 @@ def patch_domain_source(text: str) -> str:
 def patch_moviesdrive_domain_source(text: str) -> str:
     if "DOMAIN_JSON_URL" in text:
         updated, count = re.subn(
-            r"""(?:var|const|let)\s+DOMAIN_JSON_URL\s*=\s*["'][^"']+["'];""",
-            f'const DOMAIN_JSON_URL = "{ADDON_DOMAINS_URL}";',
+            r"""DOMAIN_JSON_URL\s*=\s*["'][^"']+["']""",
+            f'DOMAIN_JSON_URL = "{ADDON_DOMAINS_URL}"',
             text,
             count=1,
         )
@@ -518,7 +518,7 @@ def patch_stream_normalization(text: str) -> str:
 
 
 def transform_source(provider: Provider, text: str) -> str:
-    if provider.scraper_id in {"4khdhub", "4khdhubtv", "hdhub4u", "4khdhub_yoruix", "hdhub4u_yoruix"}:
+    if provider.scraper_id in {"4khdhub", "4khdhubtv", "hdhub4u", "4khdhub_yoruix", "hdhub4u_yoruix"} and "DOMAINS_URL" in text:
         text = patch_domain_source(text)
     elif provider.scraper_id == "moviesdrive":
         text = patch_moviesdrive_domain_source(text)
