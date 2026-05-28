@@ -11,22 +11,21 @@ function configuredBaseUrl() {
   return raw.replace(/\/manifest\.json$/i, "").replace(/\/+$/, "");
 }
 
-function streamId(tmdbId, mediaType, season, episode) {
-  const baseId = `tmdb:${tmdbId}`;
+function streamId(baseId, mediaType, season, episode) {
   if ((mediaType === "series" || mediaType === "tv") && season != null && episode != null) {
     return `${baseId}:${season}:${episode}`;
   }
   return baseId;
 }
 
-async function fetchMediaFusionStreams(tmdbId, mediaType, season, episode) {
+async function fetchMediaFusionStreams(stremioId, mediaType, season, episode) {
   const baseUrl = configuredBaseUrl();
   if (!baseUrl) {
     return [];
   }
 
   const stremioType = mediaType === "tv" ? "series" : mediaType;
-  const id = streamId(tmdbId, stremioType, season, episode);
+  const id = streamId(stremioId, stremioType, season, episode);
   const url = `${baseUrl}/stream/${encodeURIComponent(stremioType)}/${encodeURIComponent(id)}.json`;
   const response = await fetch(url, {
     headers: {
@@ -43,10 +42,21 @@ async function fetchMediaFusionStreams(tmdbId, mediaType, season, episode) {
   return Array.isArray(payload.streams) ? payload.streams : [];
 }
 
-async function getStreams(tmdbId, mediaType = "movie", season = null, episode = null) {
+async function getStreams(tmdbId, mediaType = "movie", season = null, episode = null, imdbId = "") {
   try {
-    const streams = await fetchMediaFusionStreams(tmdbId, mediaType, season, episode);
-    return streams.filter((stream) => stream && stream.url);
+    const ids = [
+      imdbId,
+      tmdbId ? `tmdb:${tmdbId}` : ""
+    ].filter(Boolean);
+
+    for (const id of ids) {
+      const streams = await fetchMediaFusionStreams(id, mediaType, season, episode);
+      if (streams.length > 0) {
+        return streams.filter((stream) => stream && stream.url);
+      }
+    }
+
+    return [];
   } catch (error) {
     console.error(`[${PROVIDER_NAME}] ${error.message || error}`);
     return [];

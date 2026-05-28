@@ -1162,7 +1162,7 @@ function enrichTrustedProviderStream(rawStream, provider, mediaInfo) {
 async function collectProviderStreams(provider, parsed, tmdbId, mediaInfo) {
   const providerGetStreams = loadProvider(provider);
   const rawStreams = await withTimeout(
-    Promise.resolve(providerGetStreams(tmdbId, parsed.mediaType, parsed.season, parsed.episode)),
+    Promise.resolve(providerGetStreams(tmdbId, parsed.mediaType, parsed.season, parsed.episode, parsed.imdbId)),
     DEFAULT_TIMEOUT_MS,
     provider.name
   );
