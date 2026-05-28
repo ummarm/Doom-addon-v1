@@ -195,11 +195,11 @@ async function resolveMediaInfo(tmdbId, mediaType) {
 
 function qualityRank(value) {
   const text = String(value || "").toLowerCase();
-  if (text.includes("2160") || text.includes("4k")) return 5;
-  if (text.includes("1440") || text.includes("2k")) return 4;
-  if (text.includes("1080")) return 3;
-  if (text.includes("720")) return 2;
-  if (text.includes("480")) return 1;
+  if (/\b2160p?\b/.test(text) || /(^|[^a-z0-9])4k([^a-z0-9]|$)/.test(text)) return 5;
+  if (/\b1440p?\b/.test(text) || /(^|[^a-z0-9])2k([^a-z0-9]|$)/.test(text)) return 4;
+  if (/\b1080p?\b/.test(text)) return 3;
+  if (/\b720p?\b/.test(text)) return 2;
+  if (/\b480p?\b/.test(text)) return 1;
   return 0;
 }
 
@@ -697,6 +697,9 @@ function matchesRequestedMedia(stream, mediaInfo, parsed) {
     const hasExactToken = normalizedEvidence.split(" ").includes(token);
     if (!hasExactToken) {
       return false;
+    }
+    if (mediaInfo.year && normalizedEvidence.includes(mediaInfo.year)) {
+      return true;
     }
 
     const extraTitleTokens = evidenceTokens.filter((evidenceToken) => evidenceToken !== token);
