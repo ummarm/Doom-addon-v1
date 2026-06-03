@@ -1533,29 +1533,37 @@ function filterRequestedMediaStreams(streams, mediaInfo, parsed) {
   });
 }
 
-function sortStreams(streams) {
+function compareStreamSizesAscending(a, b) {
+  const sizeA = streamSizeBytes(a);
+  const sizeB = streamSizeBytes(b);
+  if (sizeA && sizeB && sizeA !== sizeB) {
+    return sizeA - sizeB;
+  }
+  if (sizeA && !sizeB) return -1;
+  if (!sizeA && sizeB) return 1;
+  return 0;
+}
+
+function sortStreams(streams, options = {}) {
   return streams.sort((a, b) => {
+    const sizeOrder = compareStreamSizesAscending(a, b);
+    if (options.qualityBand && sizeOrder !== 0) {
+      return sizeOrder;
+    }
+
     const hindiA = isPassthroughStream(a) && hasHindiLanguage(a);
     const hindiB = isPassthroughStream(b) && hasHindiLanguage(b);
     if (hindiA !== hindiB) {
       return hindiB ? 1 : -1;
     }
 
-    const rankA = qualityRank(`${a.name} ${a.description}`);
-    const rankB = qualityRank(`${b.name} ${b.description}`);
+    const rankA = qualityRank(streamQualityText(a));
+    const rankB = qualityRank(streamQualityText(b));
     if (rankA !== rankB) {
       return rankB - rankA;
     }
 
-    const sizeA = streamSizeBytes(a);
-    const sizeB = streamSizeBytes(b);
-    if (sizeA && sizeB && sizeA !== sizeB) {
-      return sizeA - sizeB;
-    }
-    if (sizeA && !sizeB) return -1;
-    if (!sizeA && sizeB) return 1;
-
-    return 0;
+    return sizeOrder;
   });
 }
 
@@ -1572,7 +1580,7 @@ async function finalizeStreams(providerResults, options = {}) {
     probeTimeoutMs: options.probeTimeoutMs
   });
   const qualityMatchedStreams = filterStreamsByQualityBand([...playableStreams, ...passthrough], options.qualityBand);
-  return sortStreams(qualityMatchedStreams);
+  return sortStreams(qualityMatchedStreams, { qualityBand: options.qualityBand });
 }
 
 async function startStreamBuild(type, id, entries, requestContext = {}) {

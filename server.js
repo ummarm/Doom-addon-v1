@@ -11,6 +11,8 @@ const PORT = Number(process.env.PORT || 7000);
 const HOST = process.env.HOST || "0.0.0.0";
 const ASSETS_DIR = path.join(__dirname, "assets");
 const AIO_REDIRECT_TTL_MS = Number(process.env.AIO_REDIRECT_TTL_MS || 30 * 60 * 1000);
+const AIO_REDIRECT_PREWARM_LIMIT = Number(process.env.AIO_REDIRECT_PREWARM_LIMIT || 12);
+const AIO_REDIRECT_MAX_HOPS = Number(process.env.AIO_REDIRECT_MAX_HOPS || 5);
 const aioRedirectEntries = new Map();
 
 function sendJson(response, statusCode, payload, cacheSeconds = 0) {
@@ -110,16 +112,41 @@ function aioFingerprintScore(expected, candidate) {
   return score;
 }
 
-function rememberAioRedirect(stream, streamRequest) {
+function prewarmAioRedirect(entry) {
+  if (!entry || entry.handoffUrl || entry.handoffPromise) {
+    return;
+  }
+
+  entry.handoffPromise = resolveAioHandoffUrl(entry.fallbackUrl)
+    .then((location) => {
+      entry.handoffUrl = location;
+      return location;
+    })
+    .catch((error) => {
+      console.error(`[AIOStreams] Handoff prewarm failed: ${error.message || error}`);
+      return entry.fallbackUrl;
+    })
+    .finally(() => {
+      entry.handoffPromise = null;
+    });
+}
+
+function rememberAioRedirect(stream, streamRequest, shouldPrewarm = false) {
   cleanupAioRedirectEntries();
   const token = crypto.randomUUID();
-  aioRedirectEntries.set(token, {
+  const entry = {
     type: streamRequest.type,
     id: streamRequest.id,
     fingerprint: aioStreamFingerprint(stream),
     fallbackUrl: stream.url,
+    handoffUrl: "",
+    handoffPromise: null,
     expiresAt: Date.now() + AIO_REDIRECT_TTL_MS
-  });
+  };
+  aioRedirectEntries.set(token, entry);
+  if (shouldPrewarm) {
+    prewarmAioRedirect(entry);
+  }
   return token;
 }
 
@@ -128,12 +155,15 @@ function redirectAioStreams(streams, streamRequest, origin) {
     return streams;
   }
 
+  let prewarmCount = 0;
   return streams.map((stream) => {
     if (!stream || typeof stream !== "object" || !isAioPlaybackUrl(stream.url)) {
       return stream;
     }
 
-    const token = rememberAioRedirect(stream, streamRequest);
+    const shouldPrewarm = prewarmCount < AIO_REDIRECT_PREWARM_LIMIT;
+    prewarmCount += 1;
+    const token = rememberAioRedirect(stream, streamRequest, shouldPrewarm);
     return Object.assign({}, stream, {
       url: `${origin}/aio-redirect/${encodeURIComponent(token)}`
     });
@@ -169,25 +199,31 @@ async function resolveAioHandoffUrl(playbackUrl) {
     return playbackUrl;
   }
 
-  const response = await fetch(playbackUrl, {
-    headers: {
-      "Accept": "*/*",
-      "Range": "bytes=0-1",
-      "User-Agent": "Doom-addon/1.0"
-    },
-    redirect: "manual"
-  });
+  let currentUrl = playbackUrl;
+  for (let hop = 0; hop < AIO_REDIRECT_MAX_HOPS; hop += 1) {
+    const response = await fetch(currentUrl, {
+      headers: {
+        "Accept": "*/*",
+        "Range": "bytes=0-1",
+        "User-Agent": "Doom-addon/1.0"
+      },
+      redirect: "manual"
+    });
 
-  if (response.body && typeof response.body.cancel === "function") {
-    await response.body.cancel().catch(() => {});
+    if (response.body && typeof response.body.cancel === "function") {
+      await response.body.cancel().catch(() => {});
+    }
+
+    const location = response.headers.get("location");
+    if (location && response.status >= 300 && response.status < 400) {
+      currentUrl = new URL(location, currentUrl).toString();
+      continue;
+    }
+
+    return currentUrl;
   }
 
-  const location = response.headers.get("location");
-  if (location && response.status >= 300 && response.status < 400) {
-    return new URL(location, playbackUrl).toString();
-  }
-
-  return playbackUrl;
+  return currentUrl;
 }
 
 async function handleAioRedirect(response, token) {
@@ -198,8 +234,15 @@ async function handleAioRedirect(response, token) {
     return;
   }
 
-  const playbackUrl = await freshAioPlaybackUrl(entry);
-  const location = await resolveAioHandoffUrl(playbackUrl);
+  let location = entry.handoffUrl;
+  if (!location && entry.handoffPromise) {
+    location = await entry.handoffPromise;
+  }
+  if (!location) {
+    const playbackUrl = await freshAioPlaybackUrl(entry);
+    location = await resolveAioHandoffUrl(playbackUrl);
+    entry.handoffUrl = location;
+  }
   response.writeHead(302, {
     "Access-Control-Allow-Origin": "*",
     "Cache-Control": "no-store",
