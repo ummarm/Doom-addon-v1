@@ -1,7 +1,7 @@
 "use strict";
 
 const PROVIDER_NAME = "AIOStreams";
-const DEFAULT_MANIFEST_URL = "https://aiostreams.elfhosted.com/stremio/2bd9ad98-8ca6-4804-9663-ff88baf8ecca/eyJpIjoiTFVybmRRTFdVTlM4UFVZdzlRbENyUT09IiwiZSI6InNvVEVSNU0zaGIvaTl0Sk93YnBXY0FVM1Y3Q1VxRWk5TWc5UDZBY3lhV1U9IiwidCI6ImEifQ/manifest.json";
+const DEFAULT_MANIFEST_URL = "https://aiostreams.elfhosted.com/stremio/2bd9ad98-8ca6-4804-9663-ff88baf8ecca/eyJpIjoia0NIZGVINjNlODIwQ2szbHJZMWllQT09IiwiZSI6IlpzZVBFQ3NRcVVKRnhQcWJJa2pudUV1N1ZQckdXUlh5bmtaRW1YNlBLNFk9IiwidCI6ImEifQ/manifest.json";
 
 function configuredBaseUrl() {
   const raw = process.env.AIOSTREAMS_MANIFEST_URL || process.env.AIOSTREAMS_BASE_URL || DEFAULT_MANIFEST_URL;

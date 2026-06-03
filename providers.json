@@ -437,7 +437,7 @@
       "id": "moviebox",
       "name": "MovieBox",
       "description": "MovieBox - Worker-backed direct streams for movies and TV",
-      "version": "1.0.6",
+      "version": "1.0.7",
       "author": "ummarm",
       "supportedTypes": [
         "movie",

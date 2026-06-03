@@ -531,11 +531,19 @@ def patch_stream_normalization(text: str) -> str:
     return text.rstrip("\n") + "\n\n" + STREAM_NORMALIZATION_SNIPPET.strip("\n") + "\n"
 
 
+def patch_moviebox_crypto_source(text: str) -> str:
+    if "CryptoJS" not in text or "crypto-js" in text:
+        return text
+    return 'var CryptoJS = require("crypto-js");\n' + text.lstrip("\n")
+
+
 def transform_source(provider: Provider, text: str) -> str:
     if provider.scraper_id in {"4khdhub", "4khdhubtv", "hdhub4u", "4khdhub_yoruix", "hdhub4u_yoruix"} and "DOMAINS_URL" in text:
         text = patch_domain_source(text)
     elif provider.scraper_id == "moviesdrive":
         text = patch_moviesdrive_domain_source(text)
+    if provider.scraper_id == "moviebox":
+        text = patch_moviebox_crypto_source(text)
     if provider.scraper_id == "hdhub4u_yoruix":
         text = patch_yoruix_hdhub4u_source(text)
     if provider.scraper_id == "hindmoviez":

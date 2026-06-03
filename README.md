@@ -76,6 +76,9 @@ http://localhost:7000/addons/d3adlyrocket/manifest.json # Umbrella D
 http://localhost:7000/addons/flixnest/manifest.json     # Umbrella F
 http://localhost:7000/addons/mediafusion/manifest.json  # Umbrella MF
 http://localhost:7000/addons/aiostreams/manifest.json   # Umbrella AIO
+http://localhost:7000/addons/quality-4k/manifest.json   # Umbrella 4K
+http://localhost:7000/addons/quality-1080/manifest.json # Umbrella 1080
+http://localhost:7000/addons/quality-low/manifest.json  # Umbrella Low
 ```
 
 You can change the port with:
@@ -136,9 +139,14 @@ AIOSTREAMS_MANIFEST_URL=https://aiostreams.elfhosted.com/stremio/<your-id>/<conf
 ```
 
 AIOStreams streams are passed through without Umbrella card formatting,
-playable probes, blocked-tag filtering, or de-duplication. The only AIOStreams
-filter is Hindi/English detection, including common English/Hindi flags. Results
-use the same Hindi-first quality and size sorting.
+playable probes, blocked-tag filtering, language filtering, or de-duplication.
+Results use the same quality and size sorting.
+
+Quality group add-ons are also exposed. `Umbrella 4K` keeps REMUX, UHD, 4K,
+and 2160p streams. `Umbrella 1080` keeps 1080p streams plus streams where no
+quality can be detected. `Umbrella Low` keeps 720p, 480p, 360p, and lower
+streams. These quality groups use all enabled providers and keep the main
+add-on rules, except AIOStreams remains pass-through before quality routing.
 
 Peachify streams are language-filtered to Hindi/English and must pass the main
 playback probe before they are returned, so expired proxy/error responses are
@@ -167,6 +175,9 @@ The stream endpoint shape is:
 /addons/yoruix/stream/movie/tt0111161.json
 /addons/d3adlyrocket/stream/movie/tt0111161.json
 /addons/flixnest/stream/movie/tt0111161.json
+/addons/quality-4k/stream/movie/tt0111161.json
+/addons/quality-1080/stream/movie/tt0111161.json
+/addons/quality-low/stream/movie/tt0111161.json
 ```
 
 ## Notes

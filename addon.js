@@ -67,6 +67,21 @@ const addonGroups = {
   aiostreams: {
     name: "Umbrella AIO",
     providerIds: ["aiostreams"]
+  },
+  "quality-4k": {
+    name: "Umbrella 4K",
+    providerIds: providerEntries.map((provider) => provider.id),
+    qualityBand: "4k"
+  },
+  "quality-1080": {
+    name: "Umbrella 1080",
+    providerIds: providerEntries.map((provider) => provider.id),
+    qualityBand: "1080"
+  },
+  "quality-low": {
+    name: "Umbrella Low",
+    providerIds: providerEntries.map((provider) => provider.id),
+    qualityBand: "low"
   }
 };
 const addonGroupEntries = Object.fromEntries(
@@ -84,8 +99,10 @@ const addonManifests = Object.fromEntries(
       description: slug === "mediafusion"
         ? `${group.name} provider group for Doom-addon. Passes MediaFusion streams through with Hindi/English detection, blocked source-tag filtering, cached/playable placeholder rejection, and Hindi-first quality/size sorting.`
         : slug === "aiostreams"
-          ? `${group.name} provider group for Doom-addon. Passes AIOStreams streams through with only Hindi/English detection and quality/size sorting.`
-          : `${group.name} provider group for Doom-addon. Uses the same Umbrella formatting, filtering, sorting, and playable checks as the main add-on.`
+          ? `${group.name} provider group for Doom-addon. Passes AIOStreams streams through without Umbrella formatting or extra filtering.`
+          : group.qualityBand
+            ? `${group.name} quality group for Doom-addon. Uses all enabled providers and keeps the main add-on rules, with streams routed by quality.`
+            : `${group.name} provider group for Doom-addon. Uses the same Umbrella formatting, filtering, sorting, and playable checks as the main add-on.`
     })
   ])
 );
@@ -336,6 +353,43 @@ function qualityRank(value) {
   if (/\b720p?\b/.test(text)) return 2;
   if (/\b480p?\b/.test(text)) return 1;
   return 0;
+}
+
+function qualityEvidenceText(value) {
+  return String(value || "")
+    .split(/\r?\n/)
+    .filter((line) => !/^\s*⚡/.test(line) && !/\b(?:Darth Vader|Murph Streams)\s+-\s+/i.test(line))
+    .join(" ");
+}
+
+function streamQualityText(stream) {
+  const behaviorHints = stream && stream.behaviorHints;
+  return [
+    qualityEvidenceText(stream && stream.name),
+    qualityEvidenceText(stream && stream.title),
+    qualityEvidenceText(stream && stream.description),
+    stream && stream.quality,
+    behaviorHints && behaviorHints.filename,
+    behaviorHints && behaviorHints.bingeGroup
+  ].filter(Boolean).join(" ");
+}
+
+function streamQualityBand(stream) {
+  const text = streamQualityText(stream);
+  if (/\b(?:remux|uhd|2160p|2160)\b/i.test(text) || /(^|[^a-z0-9])4k([^a-z0-9]|$)/i.test(text)) {
+    return "4k";
+  }
+  if (/\b(?:720p|720|480p|480|360p|360|240p|240|144p|144)\b/i.test(text)) {
+    return "low";
+  }
+  return "1080";
+}
+
+function filterStreamsByQualityBand(streams, qualityBand) {
+  if (!qualityBand) {
+    return streams;
+  }
+  return streams.filter((stream) => streamQualityBand(stream) === qualityBand);
 }
 
 function normalizeHeaders(headers) {
@@ -1389,15 +1443,7 @@ async function collectProviderStreams(provider, parsed, tmdbId, mediaInfo) {
       return (await filterMediaFusionStreams(mediaFusionStreams)).map(markPassthroughStream);
     }
 
-    return passthroughStreamsForProvider
-      .filter((stream) => {
-        if (hasAllowedPassthroughLanguage(stream)) {
-          return true;
-        }
-        console.log(`[${provider.name}] Rejected non Hindi/English stream: ${stream.name || stream.title || stream.url}`);
-        return false;
-      })
-      .map(markPassthroughStream);
+    return passthroughStreamsForProvider.map(markPassthroughStream);
   }
 
   return (Array.isArray(rawStreams) ? rawStreams : [])
@@ -1488,7 +1534,8 @@ async function finalizeStreams(providerResults, options = {}) {
     probeOnlyRequired: options.probeOnlyRequired,
     probeTimeoutMs: options.probeTimeoutMs
   });
-  return sortStreams([...playableStreams, ...passthrough]);
+  const qualityMatchedStreams = filterStreamsByQualityBand([...playableStreams, ...passthrough], options.qualityBand);
+  return sortStreams(qualityMatchedStreams);
 }
 
 async function startStreamBuild(type, id, entries) {
@@ -1526,6 +1573,8 @@ async function getStreams(type, id, options = {}) {
   if (!entries) {
     return null;
   }
+  const group = addonGroups[scope] || {};
+  const qualityBand = options.qualityBand || group.qualityBand || "";
 
   const key = streamCacheKey(type, id, scope);
   const cached = cachedStreams(key);
@@ -1552,7 +1601,8 @@ async function getStreams(type, id, options = {}) {
         mediaInfo: state.mediaInfo,
         parsed: state.parsed,
         providerEntries: entries,
-        probeOnlyRequired: true
+        probeOnlyRequired: true,
+        qualityBand
       });
     })
     .then((streams) => {
@@ -1585,7 +1635,8 @@ async function getStreams(type, id, options = {}) {
         parsed: state.parsed,
         providerEntries: entries,
         probeOnlyRequired: true,
-        probeTimeoutMs: STREAM_FAST_PROBE_TIMEOUT_MS
+        probeTimeoutMs: STREAM_FAST_PROBE_TIMEOUT_MS,
+        qualityBand
       });
 
       if (streams.length > 0) {
