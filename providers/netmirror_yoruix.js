@@ -442,6 +442,166 @@ function __doomFilterSeekableStreams(streams, providerLabel) {
   }
 })();
 
+// __DOOM_NETMIRROR_DURATION_FILTER__
+var __doomNetMirrorMinDurationSeconds = 10 * 60;
+var __doomNetMirrorDurationTimeoutMs = 5 * 1000;
+
+function __doomNetMirrorParseDuration(value) {
+  if (value === undefined || value === null || value === "") return null;
+  if (typeof value === "number" && isFinite(value) && value > 0) {
+    return value > 24 * 60 * 60 ? Math.round(value / 1000) : Math.round(value);
+  }
+
+  var text = String(value || "").trim().toLowerCase();
+  if (!text) return null;
+  var colon = text.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/);
+  if (colon) {
+    var parts = text.split(":").map(function(part) { return Number(part); });
+    return parts.length === 3
+      ? parts[0] * 3600 + parts[1] * 60 + parts[2]
+      : parts[0] * 60 + parts[1];
+  }
+
+  var hours = text.match(/([\d.]+)\s*(?:h|hr|hrs|hour|hours)\b/);
+  var minutes = text.match(/([\d.]+)\s*(?:m|min|mins|minute|minutes)\b/);
+  var seconds = text.match(/([\d.]+)\s*(?:s|sec|secs|second|seconds)\b/);
+  var total = 0;
+  if (hours) total += Number(hours[1]) * 3600;
+  if (minutes) total += Number(minutes[1]) * 60;
+  if (seconds) total += Number(seconds[1]);
+  if (total > 0) return Math.round(total);
+
+  var numeric = text.match(/^\d+(?:\.\d+)?$/);
+  if (numeric) {
+    var amount = Number(text);
+    return amount > 24 * 60 * 60 ? Math.round(amount / 1000) : Math.round(amount);
+  }
+  return null;
+}
+
+function __doomNetMirrorKnownDuration(stream) {
+  var hints = stream && stream.behaviorHints ? stream.behaviorHints : {};
+  var values = [
+    stream && stream.duration,
+    stream && stream.runtime,
+    stream && stream.length,
+    stream && stream.videoDuration,
+    stream && stream.durationSeconds,
+    hints.duration,
+    hints.runtime,
+    hints.videoDuration
+  ];
+  for (var index = 0; index < values.length; index += 1) {
+    var parsed = __doomNetMirrorParseDuration(values[index]);
+    if (parsed !== null) return parsed;
+  }
+  return null;
+}
+
+function __doomNetMirrorResolveUrl(baseUrl, nextUrl) {
+  try {
+    return new URL(nextUrl, baseUrl).toString();
+  } catch (error) {
+    return nextUrl;
+  }
+}
+
+function __doomNetMirrorFetchText(url, headers) {
+  if (typeof fetch !== "function") return Promise.resolve(null);
+  return __doomWithTimeout(fetch(url, {
+    method: "GET",
+    headers: headers || {},
+    redirect: "follow"
+  }), __doomNetMirrorDurationTimeoutMs)
+    .then(function(response) {
+      if (!response || !response.ok || !response.text) return null;
+      return response.text();
+    })
+    .catch(function() {
+      return null;
+    });
+}
+
+function __doomNetMirrorPlaylistDuration(stream, depth) {
+  if (!stream || !stream.url || !__doomLooksLikeHls(stream.url, "")) {
+    return Promise.resolve(null);
+  }
+  if (depth > 1) return Promise.resolve(null);
+
+  var headers = __doomMergeHeaders({}, stream.headers || {});
+  return __doomNetMirrorFetchText(stream.url, headers).then(function(text) {
+    if (!text) return null;
+
+    var total = 0;
+    var extinfPattern = /#EXTINF:([\d.]+)/g;
+    var match;
+    while ((match = extinfPattern.exec(text)) !== null) {
+      total += Number(match[1]) || 0;
+    }
+    if (total > 0) return Math.round(total);
+
+    if (/#EXT-X-STREAM-INF/i.test(text)) {
+      var lines = text.split(/\r?\n/);
+      for (var index = 0; index < lines.length; index += 1) {
+        if (!/^#EXT-X-STREAM-INF/i.test(lines[index])) continue;
+        for (var next = index + 1; next < lines.length; next += 1) {
+          var line = lines[next].trim();
+          if (!line || line.charAt(0) === "#") continue;
+          var childStream = Object.assign({}, stream, {
+            url: __doomNetMirrorResolveUrl(stream.url, line)
+          });
+          return __doomNetMirrorPlaylistDuration(childStream, depth + 1);
+        }
+      }
+    }
+    return null;
+  });
+}
+
+function __doomNetMirrorDurationSeconds(stream) {
+  var known = __doomNetMirrorKnownDuration(stream);
+  if (known !== null) return Promise.resolve(known);
+  return __doomNetMirrorPlaylistDuration(stream, 0);
+}
+
+function __doomNetMirrorFilterShortStreams(streams) {
+  if (!Array.isArray(streams) || streams.length === 0) return Promise.resolve([]);
+
+  return Promise.all(streams.map(function(stream) {
+    return __doomNetMirrorDurationSeconds(stream)
+      .then(function(seconds) { return { stream: stream, seconds: seconds }; })
+      .catch(function() { return { stream: stream, seconds: null }; });
+  })).then(function(results) {
+    return results.filter(function(item) {
+      if (item.seconds === null || item.seconds === undefined) return true;
+      if (item.seconds >= __doomNetMirrorMinDurationSeconds) return true;
+      console.log("[NetMirror Yoruix] Rejected short video stream under 10 minutes (" + item.seconds + "s)");
+      return false;
+    }).map(function(item) {
+      return item.stream;
+    });
+  });
+}
+
+(function() {
+  if (typeof getStreams !== "function" || getStreams.__doomNetMirrorDurationWrapped) return;
+
+  var __doomNetMirrorOriginalGetStreams = getStreams;
+  var __doomNetMirrorWrappedGetStreams = function() {
+    return Promise.resolve(__doomNetMirrorOriginalGetStreams.apply(this, arguments))
+      .then(__doomNetMirrorFilterShortStreams);
+  };
+
+  __doomNetMirrorWrappedGetStreams.__doomNetMirrorDurationWrapped = true;
+  getStreams = __doomNetMirrorWrappedGetStreams;
+
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports.getStreams = getStreams;
+  } else if (typeof global !== "undefined") {
+    global.getStreams = getStreams;
+  }
+})();
+
 // __DOOM_STREAM_NORMALIZATION__
 function __doomNormalizeHeaders(headers) {
   if (!headers || typeof headers !== "object") return null;

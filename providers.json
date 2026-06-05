@@ -1,6 +1,6 @@
 {
   "name": "Doom-addon",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "scrapers": [
     {
       "id": "4khdhub",
@@ -204,7 +204,7 @@
       "id": "netmirror_yoruix",
       "name": "NetMirror Yoruix",
       "description": "Alternate NetMirror implementation synced from yoruix/nuvio-providers",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
@@ -557,7 +557,7 @@
         "tv"
       ],
       "filename": "providers/4khdhubnew.js",
-      "enabled": true,
+      "enabled": false,
       "formats": [
         "mp4",
         "mkv",
