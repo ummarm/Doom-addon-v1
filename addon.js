@@ -55,6 +55,7 @@ const addonGroups = {
       "moviesdrive",
       "netmirror",
       "peachify",
+      "vidlink",
       "streamflix",
       "uhdmovies",
       "4khdhubnew"
@@ -612,7 +613,7 @@ async function responseSample(response) {
 }
 
 function streamRequiresProbe(stream) {
-  return Boolean(stream.behaviorHints && ["hdhub4u", "hdhub4u_yoruix", "hdhub4u_murph", "peachify"].includes(stream.behaviorHints.doomProviderId));
+  return Boolean(stream.behaviorHints && ["hdhub4u", "hdhub4u_yoruix", "hdhub4u_murph", "peachify", "vidlink"].includes(stream.behaviorHints.doomProviderId));
 }
 
 function isFastAcceptableStream(stream) {
@@ -750,6 +751,7 @@ const UMBRELLA_PROVIDER_CODES = {
   "netmirror": "NM",
   "netmirror_yoruix": "NM Y",
   "peachify": "PF",
+  "vidlink": "VL DR",
   "streamflix": "SF",
   "uhdmovies": "UHD DR",
   "uhdmovies_yoruix": "UHD Y"
@@ -787,6 +789,7 @@ const SOURCE_DETAIL_NAMES = {
   "netmirror": "Darth Vader",
   "netmirror_yoruix": "Darth Vader",
   "peachify": "Darth Vader",
+  "vidlink": "Darth Vader",
   "streamflix": "Darth Vader",
   "uhdmovies": "Darth Vader",
   "uhdmovies_yoruix": "Darth Vader"
@@ -1334,6 +1337,10 @@ function shouldKeepProviderStream(rawStream, provider) {
 
   if (provider.id === "peachify" || provider.id === "moviebox_murph") {
     return /\b(?:hindi|english)\b/i.test(text);
+  }
+
+  if (provider.id === "vidlink") {
+    return /\b1080p\b/i.test(text);
   }
 
   if (provider.id !== "movieblast" && provider.id !== "movieblast_yoruix") {

@@ -25,7 +25,7 @@ STREMIO_MANIFEST_PATH = REPO_ROOT / "manifest.json"
 PACKAGE_PATH = REPO_ROOT / "package.json"
 PROVIDERS_DIR = REPO_ROOT / "providers"
 ANCHOR_DATE = date(2026, 4, 20)
-CADENCE_DAYS = 2
+CADENCE_DAYS = 1
 D3ADLYROCKET_UPSTREAM_RAW_BASE = "https://raw.githubusercontent.com/D3adlyRocket/All-in-One-Nuvio/main"
 D3ADLYROCKET_UPSTREAM_TREE_API = "https://api.github.com/repos/D3adlyRocket/All-in-One-Nuvio/git/trees/main?recursive=1"
 YORUIX_UPSTREAM_RAW_BASE = "https://raw.githubusercontent.com/yoruix/nuvio-providers/main"
@@ -33,6 +33,7 @@ YORUIX_UPSTREAM_TREE_API = "https://api.github.com/repos/yoruix/nuvio-providers/
 YORUIX_MANIFEST_URL = "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/manifest.json"
 MURPH_MANIFEST_URL = "https://badboysxs-morpheus.hf.space/manifest.json"
 ADDON_DOMAINS_URL = "https://raw.githubusercontent.com/ummarm/Doom-addon/main/domains.json"
+UPSTREAM_DOMAINS_URL = "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/domains.json"
 USER_AGENT = "Doom-addon direct upstream sync"
 SEEKABLE_VALIDATION_MARKER = "__DOOM_SEEKABLE_VALIDATION__"
 NETMIRROR_DURATION_FILTER_MARKER = "__DOOM_NETMIRROR_DURATION_FILTER__"
@@ -494,6 +495,7 @@ PROVIDERS = (
     Provider("movies4u", ("providers/movies4u.js",), "providers/movies4u.js", ("movies4u",)),
     Provider("netmirror", ("providers/netmirror.js",), "providers/netmirror.js", ("netmirror",)),
     Provider("peachify", ("providers/peachify.js",), "providers/peachify.js", ("peachify",)),
+    Provider("vidlink", ("providers/vidlink.js",), "providers/vidlink.js", ("vidlink",)),
     Provider("uhdmovies", ("providers/uhdmovies.js",), "providers/uhdmovies.js", ("uhdmovies",)),
     Provider("4khdhubnew", ("providers/4khdhubnew.js",), "providers/4khdhubnew.js", ("4khdhubnew", "4khdhub", "hubcloud")),
     Provider("4khdhub_yoruix", ("providers/4khdhub.js",), "providers/4khdhub_yoruix.js", ("4khdhub", "hubcloud", "yoruix"), YORUIX_UPSTREAM_RAW_BASE, YORUIX_UPSTREAM_TREE_API),
@@ -670,7 +672,7 @@ def patch_moviesdrive_domain_source(text: str) -> str:
 
 
 def patch_yoruix_hdhub4u_source(text: str) -> str:
-    return text.replace("https://search.pingora.fyi", "https://search.hdhub4u.glass")
+    return text.replace("https://search.hdhub4u.glass", "https://search.pingora.fyi")
 
 
 def patch_hindmoviez_source(text: str) -> str:
@@ -750,6 +752,49 @@ def write_json_if_changed(path: Path, payload: dict) -> bool:
         return False
     path.write_text(next_text, encoding="utf-8")
     return True
+
+
+def normalize_domain_value(value: object) -> str:
+    if isinstance(value, str):
+        return value.rstrip("/")
+    if isinstance(value, dict):
+        nested = value.get("url") or value.get("domain")
+        if isinstance(nested, str):
+            return nested.rstrip("/")
+    return ""
+
+
+def sync_domains() -> tuple[set[str], list[str]]:
+    warnings: list[str] = []
+    try:
+        upstream = fetch_json(UPSTREAM_DOMAINS_URL)
+    except Exception as exc:
+        return set(), [f"Domain sync failed: {exc}"]
+
+    if not isinstance(upstream, dict):
+        return set(), ["Domain sync failed: upstream domains payload was not an object."]
+
+    local = json.loads((REPO_ROOT / "domains.json").read_text(encoding="utf-8"))
+    domain_map = {
+        "4khdhub": ("4khdhub", {"4khdhub", "4khdhubtv", "4khdhub_yoruix", "4khdhubnew"}),
+        "HDHUB4u": ("HDHUB4u", {"hdhub4u", "hdhub4u_yoruix"}),
+        "Moviesdrive": ("moviesdrive", {"moviesdrive"}),
+    }
+
+    changed_ids: set[str] = set()
+    for local_key, (upstream_key, affected_ids) in domain_map.items():
+        next_value = normalize_domain_value(upstream.get(upstream_key) or upstream.get(local_key))
+        if not next_value:
+            warnings.append(f"Domain sync did not find `{upstream_key}` in upstream domains.")
+            continue
+        if local.get(local_key) != next_value:
+            local[local_key] = next_value
+            changed_ids.update(affected_ids)
+
+    if changed_ids:
+        write_json_if_changed(REPO_ROOT / "domains.json", local)
+
+    return changed_ids, warnings
 
 
 def provider_names(registry: dict) -> list[str]:
@@ -839,6 +884,8 @@ def main() -> int:
 
     changed_providers: list[ResolvedProvider] = []
     sync_warnings: list[str] = []
+    changed_domain_ids, domain_warnings = sync_domains()
+    sync_warnings.extend(domain_warnings)
     upstream_tree_cache: dict[str, list[str]] = {}
     upstream_manifest_cache: dict[str, list[str]] = {}
 
@@ -913,9 +960,11 @@ def main() -> int:
 
     sync_warnings.extend(check_murph_manifest())
 
-    changed_ids = {provider.scraper_id for provider in changed_providers}
+    changed_ids = {provider.scraper_id for provider in changed_providers} | changed_domain_ids
     registry_changed, version_changes, registry = update_versions(changed_ids)
     changed_files: list[str] = [provider.provider.local_path_str for provider in changed_providers]
+    if changed_domain_ids:
+        changed_files.append("domains.json")
 
     if changed_ids:
         if registry_changed:
@@ -926,7 +975,7 @@ def main() -> int:
             changed_files.append("package.json")
 
     changed = bool(changed_files)
-    changed_names = ",".join(provider.scraper_id for provider in changed_providers)
+    changed_names = ",".join(sorted(changed_ids))
     write_output("changed", "true" if changed else "false")
     write_output("skipped", "false")
     write_output("changed_scrapers", changed_names)
@@ -940,9 +989,10 @@ def main() -> int:
         "Sources:",
         f"- `{D3ADLYROCKET_UPSTREAM_RAW_BASE}`",
         f"- `{YORUIX_MANIFEST_URL}`",
+        f"- `{UPSTREAM_DOMAINS_URL}`",
         f"- `{MURPH_MANIFEST_URL}`",
     ]
-    if changed_providers:
+    if changed_ids:
         summary_lines.extend(["", f"Updated scrapers: `{changed_names}`", "", "Version bumps:"])
         summary_lines.extend(f"- {item}" for item in version_changes)
         summary_lines.extend(["", "Changed files:"])
