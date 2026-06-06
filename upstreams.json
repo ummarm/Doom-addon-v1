@@ -7,7 +7,7 @@
     "murph": "https://badboysxs-morpheus.hf.space/manifest.json"
   },
   "domainSources": {
-    "doomAddon": "https://raw.githubusercontent.com/ummarm/Doom-addon/main/domains.json",
+    "doomAddon": "https://raw.githubusercontent.com/ummarm/Doom-addon-v1/main/domains.json",
     "upstream": "https://raw.githubusercontent.com/phisher98/TVVVV/refs/heads/main/domains.json"
   }
 }

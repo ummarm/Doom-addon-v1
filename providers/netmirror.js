@@ -1,254 +1,265 @@
-const _0x2a0f0d=_0x10a5;function _0x4531(){const _0x2f6481=['ntK4ndy4yMvpBKfY','BgvUz3rO','mZK1ntC2vfLTq0f4','Dg9tDhjPBMC','D2fYBG','ksbVBIa','ig5VDcbMB3vUzcbVBIa','zgvMAw5LuhjVCgvYDgLLCW','C3bSAxq','Ahr0Chm6lY9HCgKUDgHLBw92AwvKyI5VCMCVmW','DMLKzw9FBgLUAW','ndaWnZu1CxLRs0Tr','igzVCIaI','zM9YrwfJAa','Dg9mB3DLCKnHC2u','Ahr0Chm6lY90DI5PBwDJzg4UA2LTl25LD3r2','ChvZAa','BMv0BwLYCM9Y','BwfW','mZa1ndKWotbXEeXUCg0','ANnVBG','vxnLCI1bz2vUDa','w05LDe1PCNjVCL0Gu2vHC29Uia','zgvMAw5LuhjVCgvYDhK','w05LDe1PCNjVCL0GrMv0y2HPBMCGzMLUywWGC3rYzwfTihbHEwXVywqGzM9YieLeia','nZiW','mte5ntG2mJbQrfDtCuO','w05LDe1PCNjVCL0GrMf0ywWGB3zLCMfSBcbLEhrYywn0Aw9UigzHAwX1CMu6','ihn0CMvHBsHZks4','BgfZDeLUzgv4t2y','DMfSDwu','4Ocl4Ocl4Ocl4Ocl','l2vWAxnVzgvZlNbOCd9Pzd0','nZbVEeXTB1a','DhjPBq','y2f0y2G','yxv0BW','tw96AwXSys81lJaGkfDPBMrVD3mGtLqGmtaUmdSGv2LUnJq7ihG2ncKGCNy6mtm2lJaPieDLy2TVlZiWmtaWmtaXiezPCMvMB3GVmtm2lJaGl09tlKDHDhvozxDuvIb2ms4W','C3rHCNrZv2L0Aa','w05LDe1PCNjVCL0Gu3rHCNrPBMCGC2vHCMnOigzVCIa','w05LDe1PCNjVCL0GrxjYB3iGzNjVBsbZzxj2AwnLia','zMLUza','mta4ma','mZe0mtGWmvf4r0fUBq','ywXS','nZqXodLHquTfvwu','Btn1oa','DgHYB3C','Bg9N','icHjrdOG','BMfTzq','Dgv4Da','lM0ZDtG','Aw5JBhvKzxm','nLrit0P6sW','DwHK','yxbWBhK','zxjYB3i','CxvHBgL0Eq','B3jPz2LU','BwvZC2fNzq','CMvMzxjLCG','ndjtAgn5yKy','mJe2ma','ksWGzhjPBgXPBMCGzg93BIb0BYbt','jNbHz2u9','mJz3z3v1u0i','tMv0zMXPEa','w05LDe1PCNjVCL0GrxbPC29Kzsa'];_0x4531=function(){return _0x2f6481;};return _0x4531();}(function(_0x2de3bc,_0x351406){const _0x47f918={_0x525614:0x1ac,_0x153244:0x175,_0x3a8dd5:0x1a8,_0x4c13ba:0x18b,_0x13d494:0x16c,_0x338e20:0x195,_0x1e1dae:0x17d},_0xebb8cd=_0x10a5,_0x47f20c=_0x2de3bc();while(!![]){try{const _0x50f63a=parseInt(_0xebb8cd(0x197))/0x1*(-parseInt(_0xebb8cd(_0x47f918._0x525614))/0x2)+parseInt(_0xebb8cd(0x1a0))/0x3*(-parseInt(_0xebb8cd(0x16a))/0x4)+parseInt(_0xebb8cd(_0x47f918._0x153244))/0x5*(-parseInt(_0xebb8cd(_0x47f918._0x3a8dd5))/0x6)+parseInt(_0xebb8cd(_0x47f918._0x4c13ba))/0x7*(parseInt(_0xebb8cd(_0x47f918._0x13d494))/0x8)+parseInt(_0xebb8cd(_0x47f918._0x338e20))/0x9+-parseInt(_0xebb8cd(0x184))/0xa+parseInt(_0xebb8cd(_0x47f918._0x1e1dae))/0xb;if(_0x50f63a===_0x351406)break;else _0x47f20c['push'](_0x47f20c['shift']());}catch(_0x1fcbcc){_0x47f20c['push'](_0x47f20c['shift']());}}}(_0x4531,0x9284b));var __defProp=Object[_0x2a0f0d(0x181)],__defProps=Object[_0x2a0f0d(0x171)],__getOwnPropDescs=Object['getOwnPropertyDescriptors'],__getOwnPropSymbols=Object['getOwnPropertySymbols'],__hasOwnProp=Object['prototype']['hasOwnProperty'],__propIsEnum=Object['prototype']['propertyIsEnumerable'],__defNormalProp=(_0x92b10d,_0x194e92,_0x81782a)=>_0x194e92 in _0x92b10d?__defProp(_0x92b10d,_0x194e92,{'enumerable':!![],'configurable':!![],'writable':!![],'value':_0x81782a}):_0x92b10d[_0x194e92]=_0x81782a,__spreadValues=(_0x2d0e9e,_0x4b5223)=>{for(var _0xa2f427 in _0x4b5223||(_0x4b5223={}))if(__hasOwnProp['call'](_0x4b5223,_0xa2f427))__defNormalProp(_0x2d0e9e,_0xa2f427,_0x4b5223[_0xa2f427]);if(__getOwnPropSymbols)for(var _0xa2f427 of __getOwnPropSymbols(_0x4b5223)){if(__propIsEnum['call'](_0x4b5223,_0xa2f427))__defNormalProp(_0x2d0e9e,_0xa2f427,_0x4b5223[_0xa2f427]);}return _0x2d0e9e;},__spreadProps=(_0x349e95,_0x4434e2)=>__defProps(_0x349e95,__getOwnPropDescs(_0x4434e2)),__async=(_0x2e576b,_0x14a341,_0x18adea)=>{const _0x56e5c9={_0x5a2ff4:0x199};return new Promise((_0x4d4778,_0x51c7a5)=>{const _0x3a289b=_0x10a5;var _0x3f27ba=_0x2d9836=>{try{_0x12b329(_0x18adea['next'](_0x2d9836));}catch(_0x16f0a1){_0x51c7a5(_0x16f0a1);}},_0x5ac59b=_0xfcf8e8=>{const _0xad4eac=_0x10a5;try{_0x12b329(_0x18adea[_0xad4eac(_0x56e5c9._0x5a2ff4)](_0xfcf8e8));}catch(_0x5e7cd8){_0x51c7a5(_0x5e7cd8);}},_0x12b329=_0x108110=>_0x108110['done']?_0x4d4778(_0x108110['value']):Promise['resolve'](_0x108110[_0x3a289b(0x188)])['then'](_0x3f27ba,_0x5ac59b);_0x12b329((_0x18adea=_0x18adea[_0x3a289b(0x1a2)](_0x2e576b,_0x14a341))['next']());});},CONFIG_URL='https://raw.githubusercontent.com/SaurabhKaperwan/Utils/refs/heads/main/urls.json',FALLBACK_NF_API=_0x2a0f0d(0x179),OTT_SERVICES=[{'code':'nf','name':_0x2a0f0d(0x1ad)},{'code':'pv','name':'PrimeVideo'},{'code':'hs','name':'Hotstar'}],TMDB_API_KEY='439c478a771f35c05022f9feabcca01c',TMDB_BASE_URL=_0x2a0f0d(0x173);function getNfMirrorApi(){const _0x1e6276={_0x3e9fb8:0x16e};return __async(this,null,function*(){const _0x58ff48=_0x10a5;try{const _0x27bbf8=yield fetch(CONFIG_URL),_0x373c1c=yield _0x27bbf8['json']();return _0x373c1c['nfmirror']||FALLBACK_NF_API;}catch(_0x37d2b4){return console[_0x58ff48(_0x1e6276._0x3e9fb8)]('[NetMirror]\x20Using\x20fallback\x20API\x20URL:',FALLBACK_NF_API),FALLBACK_NF_API;}});}function getMediaDetails(_0x10b325,_0x46a0f6){const _0x115ab1={_0x4d8751:0x17e};return __async(this,null,function*(){const _0x385813=_0x10a5,_0xcc0bd=_0x46a0f6==='tv'?'tv':'movie',_0x17ae5f=TMDB_BASE_URL+'/'+_0xcc0bd+'/'+_0x10b325+'?api_key='+TMDB_API_KEY,_0x25f69a=yield fetch(_0x17ae5f);return _0x25f69a[_0x385813(_0x115ab1._0x4d8751)]();});}function generateM3u8(_0x136669){const _0x5ad403={_0x407c31:0x19a,_0x2a1770:0x19d,_0x2890ad:0x172,_0x3e5f8e:0x190};return __async(this,arguments,function*(_0x64729c,_0x1c39cc={}){const _0x3b4cd0=_0x10a5;try{console[_0x3b4cd0(_0x5ad403._0x407c31)]('[NetMirror]\x20Parsing\x20master\x20m3u8:\x20'+_0x64729c);const _0x362df7=yield fetch(_0x64729c,{'headers':_0x1c39cc}),_0x48af33=yield _0x362df7[_0x3b4cd0(_0x5ad403._0x2a1770)](),_0x2c8f9c=_0x64729c['substring'](0x0,_0x64729c[_0x3b4cd0(0x187)]('/'))+'/',_0x177f37=[],_0x3e07f3=/#EXT-X-STREAM-INF:.*?RESOLUTION=(\d+x\d+).*?\n([^\n]+)/g;let _0x533e19;while((_0x533e19=_0x3e07f3['exec'](_0x48af33))!==null){const _0x4ea1c5=parseInt(_0x533e19[0x1][_0x3b4cd0(_0x5ad403._0x2890ad)]('x')[0x1]);if(_0x4ea1c5<0x2d0)continue;const _0x4c9ab=_0x4ea1c5+'p';let _0x4221da=_0x533e19[0x2]['trim']();if(!_0x4221da[_0x3b4cd0(_0x5ad403._0x3e5f8e)]('http')){if(_0x4221da['startsWith']('/')){const _0x24fa1b=new URL(_0x64729c)[_0x3b4cd0(0x1a5)];_0x4221da=_0x24fa1b+_0x4221da;}else _0x4221da=_0x2c8f9c+_0x4221da;}_0x177f37['push']({'quality':_0x4c9ab,'url':_0x4221da});}return _0x177f37;}catch(_0x37ac47){return console['warn']('[NetMirror]\x20Error\x20parsing\x20M3U8,\x20returning\x20empty.',_0x37ac47),[];}});}function getStreams(_0x217a20,_0x284199,_0x330940,_0x4dc845){const _0x18fc4b={_0x7f0e7b:0x196,_0x3884e5:0x1a3,_0x54d413:0x185,_0x533941:0x186,_0x531d98:0x17c},_0x4c12da={_0x32eb9a:0x16e};return __async(this,null,function*(){const _0x19791c=_0x10a5;console[_0x19791c(0x19a)](_0x19791c(0x191)+_0x284199+'\x20'+_0x217a20);const _0x4e0783=[];try{const _0x1a11ea=yield getMediaDetails(_0x217a20,_0x284199),_0x230fc2=_0x284199==='tv'?_0x1a11ea[_0x19791c(0x19c)]:_0x1a11ea['title'];if(!_0x230fc2)return console['log']('[NetMirror]\x20Could\x20not\x20retrieve\x20media\x20title.'),[];const _0x45878f=yield getNfMirrorApi();console['log']('[NetMirror]\x20Resolved\x20API\x20base:\x20'+_0x45878f);const _0xf27bb5=OTT_SERVICES['map'](_0x198fb3=>extractServiceStreams(_0x45878f,_0x198fb3,_0x230fc2,_0x284199,_0x330940,_0x4dc845)[_0x19791c(0x18d)](_0x3f7444=>{const _0x3d17a7=_0x19791c;return console[_0x3d17a7(_0x4c12da._0x32eb9a)](_0x3d17a7(0x192)+_0x198fb3['name']+':',_0x3f7444[_0x3d17a7(0x1a6)]),[];})),_0x860050=yield Promise[_0x19791c(_0x18fc4b._0x7f0e7b)](_0xf27bb5);for(const _0x5ea9d2 of _0x860050){_0x4e0783[_0x19791c(0x17a)](..._0x5ea9d2);}}catch(_0x2f6352){console[_0x19791c(_0x18fc4b._0x3884e5)](_0x19791c(_0x18fc4b._0x54d413),_0x2f6352['message']);}return console[_0x19791c(0x19a)]('[NetMirror]\x20Returning\x20total\x20'+_0x4e0783[_0x19791c(0x16b)]+_0x19791c(_0x18fc4b._0x533941)),_0x4e0783[_0x19791c(_0x18fc4b._0x531d98)](_0x11139c=>__spreadProps(__spreadValues({},_0x11139c),{'quality':getSortedQuality(_0x11139c[_0x19791c(0x1a4)])}));});}function extractServiceStreams(_0x2a0b7d,_0x52161e,_0x1fe256,_0x210363,_0x2eef13,_0x595c9d){const _0x42e212={_0x39ed2e:0x19c,_0x7b2803:0x193,_0x463de2:0x1aa,_0x12dece:0x19a,_0x7901af:0x1ab,_0x4df508:0x170,_0x48ad11:0x182,_0x394157:0x174,_0x1ec403:0x19e,_0x1db8e8:0x1a7,_0x3853b7:0x17f,_0x8d9a83:0x17b,_0x5cd439:0x17f};return __async(this,null,function*(){const _0x19f250=_0x10a5,_0xf23d12=[],_0x14bfd5=_0x1fe256['trim'](),_0x49d584={'ott':_0x52161e['code'],'User-Agent':_0x19f250(0x18f),'x-requested-with':'NetmirrorNewTV\x20v1.0'};console[_0x19f250(0x19a)]('[NetMirror]\x20Searching\x20'+_0x52161e[_0x19f250(_0x42e212._0x39ed2e)]+_0x19f250(0x176)+_0x14bfd5+'\x22');const _0x2b981f=_0x2a0b7d+'/search.php?s='+encodeURIComponent(_0x14bfd5),_0x4cb91f=yield fetch(_0x2b981f,{'headers':_0x49d584}),_0x4b6086=yield _0x4cb91f['json'](),_0x39903c=_0x4b6086['searchResult']||[],_0x575e26=_0x39903c[_0x19f250(_0x42e212._0x7b2803)](_0x5c7c3c=>_0x5c7c3c['t']&&_0x5c7c3c['t'][_0x19f250(0x18c)]()['toLowerCase']()===_0x14bfd5[_0x19f250(0x178)]());if(!_0x575e26||!_0x575e26['id'])return console[_0x19f250(0x19a)]('[NetMirror]\x20No\x20direct\x20match\x20on\x20'+_0x52161e['name']),[];const _0x2c26cb=_0x575e26['id'];let _0x410739=_0x2c26cb;if(_0x210363==='tv'){console['log']('[NetMirror]\x20TV\x20Match\x20on\x20'+_0x52161e[_0x19f250(0x19c)]+_0x19f250(0x19b)+_0x2c26cb+_0x19f250(_0x42e212._0x463de2)+_0x2eef13+'E'+_0x595c9d);const _0x428252=yield fetch(_0x2a0b7d+'/post.php?id='+_0x2c26cb,{'headers':_0x49d584}),_0x3c7bc6=yield _0x428252[_0x19f250(0x17e)](),_0x999014=_0x3c7bc6['season']||[],_0x49e583='Season\x20'+_0x2eef13,_0x13a8c2=_0x999014[_0x19f250(0x193)](_0x1389d2=>_0x1389d2['s']&&_0x1389d2['s']['toString']()['includes'](_0x49e583));if(!_0x13a8c2||!_0x13a8c2['id'])return console[_0x19f250(_0x42e212._0x12dece)](_0x19f250(0x180)+_0x2eef13+'\x20not\x20found\x20on\x20'+_0x52161e[_0x19f250(0x19c)]),[];const _0x5d954e=_0x13a8c2['id'];let _0x2ba8b3=null,_0xaf7566=0x1;while(!_0x2ba8b3&&_0xaf7566<0xa){console[_0x19f250(0x19a)]('[NetMirror]\x20Paging\x20episodes\x20list\x20(Page\x20'+_0xaf7566+_0x19f250(0x16f)+_0x52161e['name']);const _0x2d4455=yield fetch(_0x2a0b7d+_0x19f250(0x18a)+_0x5d954e+_0x19f250(_0x42e212._0x7901af)+_0xaf7566,{'headers':_0x49d584}),_0x2c89f8=yield _0x2d4455['json'](),_0x41078a=_0x2c89f8['episodes']||[],_0x3baeaa=_0x41078a[_0x19f250(0x193)](_0x1d79b9=>_0x1d79b9['ep']&&_0x1d79b9['ep'][_0x19f250(0x16d)]()===_0x595c9d[_0x19f250(0x16d)]());_0x3baeaa&&_0x3baeaa['id']&&(_0x2ba8b3=_0x3baeaa['id']);if(parseInt(_0x2c89f8['nextPageShow'])!==0x1)break;_0xaf7566++;}if(!_0x2ba8b3)return console[_0x19f250(0x19a)](_0x19f250(0x1ae)+_0x595c9d+_0x19f250(_0x42e212._0x4df508)+_0x52161e[_0x19f250(0x19c)]),[];_0x410739=_0x2ba8b3;}console[_0x19f250(0x19a)](_0x19f250(_0x42e212._0x48ad11)+_0x410739+'\x20on\x20'+_0x52161e['name']);const _0x2f648a=yield fetch(_0x2a0b7d+'/player.php?id='+_0x410739,{'headers':_0x49d584}),_0x201efd=yield _0x2f648a[_0x19f250(0x17e)]();if(_0x201efd&&_0x201efd['video_link']){const _0x47f41e=_0x201efd[_0x19f250(_0x42e212._0x394157)],_0x19e2ab=_0x47f41e['includes'](_0x19f250(_0x42e212._0x1ec403));_0xf23d12['push']({'name':_0x52161e[_0x19f250(_0x42e212._0x39ed2e)],'title':'Auto','url':_0x47f41e,'quality':'Auto','type':_0x19e2ab?_0x19f250(0x198):_0x47f41e['includes']('.mp4')||_0x47f41e['includes']('.mkv')?'video':null,'headers':{'Referer':_0x201efd[_0x19f250(_0x42e212._0x1db8e8)]||'','User-Agent':_0x49d584[_0x19f250(_0x42e212._0x3853b7)]},'provider':_0x19f250(_0x42e212._0x8d9a83)});if(_0x19e2ab)try{const _0x5286e1=yield generateM3u8(_0x47f41e,{'Referer':_0x201efd['referer']||'','User-Agent':_0x49d584[_0x19f250(_0x42e212._0x5cd439)]});_0x5286e1[_0x19f250(0x177)](_0x15e13c=>{const _0x2e9c4e=_0x19f250;_0xf23d12[_0x2e9c4e(0x17a)]({'name':_0x52161e['name'],'title':_0x15e13c['quality'],'url':_0x15e13c['url'],'quality':_0x15e13c['quality'],'type':_0x2e9c4e(0x198),'headers':{'Referer':_0x201efd[_0x2e9c4e(0x1a7)]||'','User-Agent':_0x49d584['User-Agent']},'provider':'netmirror'});});}catch(_0x1a21b9){}console['log']('[NetMirror]\x20SUCCESS:\x20Captured\x20link\x20for\x20'+_0x52161e[_0x19f250(0x19c)]);}return _0xf23d12;});}function _0x10a5(_0x402dd8,_0x414aa5){_0x402dd8=_0x402dd8-0x16a;const _0x453148=_0x4531();let _0x10a580=_0x453148[_0x402dd8];if(_0x10a5['RkqNtF']===undefined){var _0x5d8951=function(_0x3c7f51){const _0x5828cc='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x92b10d='',_0x194e92='';for(let _0x81782a=0x0,_0x2d0e9e,_0x4b5223,_0xa2f427=0x0;_0x4b5223=_0x3c7f51['charAt'](_0xa2f427++);~_0x4b5223&&(_0x2d0e9e=_0x81782a%0x4?_0x2d0e9e*0x40+_0x4b5223:_0x4b5223,_0x81782a++%0x4)?_0x92b10d+=String['fromCharCode'](0xff&_0x2d0e9e>>(-0x2*_0x81782a&0x6)):0x0){_0x4b5223=_0x5828cc['indexOf'](_0x4b5223);}for(let _0x349e95=0x0,_0x4434e2=_0x92b10d['length'];_0x349e95<_0x4434e2;_0x349e95++){_0x194e92+='%'+('00'+_0x92b10d['charCodeAt'](_0x349e95)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x194e92);};_0x10a5['cbeqOP']=_0x5d8951,_0x10a5['FRxafu']={},_0x10a5['RkqNtF']=!![];}const _0x4cbb75=_0x453148[0x0],_0x5db36f=_0x402dd8+_0x4cbb75,_0x5cbf62=_0x10a5['FRxafu'][_0x5db36f];return!_0x5cbf62?(_0x10a580=_0x10a5['cbeqOP'](_0x10a580),_0x10a5['FRxafu'][_0x5db36f]=_0x10a580):_0x10a580=_0x5cbf62,_0x10a580;}function getSortedQuality(_0x8ff978){const _0x10adef={_0x3f6a97:0x1a9,_0x3afbe1:0x19f,_0x133424:0x194,_0x18075d:0x19f,_0x43ffb9:0x19f,_0x50f963:0x189},_0x284c09=_0x2a0f0d;if(!_0x8ff978)return'Auto';const _0x3c1967=_0x8ff978['toLowerCase']();if(_0x3c1967[_0x284c09(0x19f)](_0x284c09(0x18e)))return'Auto';if(_0x3c1967['includes'](_0x284c09(_0x10adef._0x3f6a97))||_0x3c1967[_0x284c09(_0x10adef._0x3afbe1)]('4k')||_0x3c1967['includes'](_0x284c09(0x1a1)))return'​'+_0x8ff978;if(_0x3c1967['includes'](_0x284c09(_0x10adef._0x133424))||_0x3c1967[_0x284c09(_0x10adef._0x18075d)]('fhd'))return'​​'+_0x8ff978;if(_0x3c1967['includes'](_0x284c09(0x183))||_0x3c1967['includes']('hd'))return'​​​'+_0x8ff978;if(_0x3c1967['includes']('480')||_0x3c1967[_0x284c09(_0x10adef._0x43ffb9)]('sd'))return'​​​​'+_0x8ff978;if(_0x3c1967[_0x284c09(0x19f)]('360'))return'​​​​​'+_0x8ff978;return _0x284c09(_0x10adef._0x50f963)+_0x8ff978;}module['exports']={'getStreams':getStreams};
+/**
+ * netmirror - Built from src/netmirror/
+ * Generated: 2026-05-06T09:03:07.585Z
+ */
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
 
-// __DOOM_SEEKABLE_VALIDATION__
-var __doomProbeCache = Object.create(null);
-var __doomProbeCacheTtlMs = 10 * 60 * 1000;
-var __doomProbeTimeoutMs = 6 * 1000;
+// src/netmirror/constants.js
+var NETMIRROR_URL = "https://net52.cc";
+var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
+var PLATFORM_MAP = {
+  netflix: {
+    ott: "nf",
+    search: "/mobile/search.php",
+    post: "/mobile/post.php",
+    episodes: "/mobile/episodes.php",
+    playlist: "/mobile/playlist.php",
+    img: "poster/v",
+    epImg: "epimg/150"
+  },
+  primevideo: {
+    ott: "pv",
+    search: "/mobile/pv/search.php",
+    post: "/mobile/pv/post.php",
+    episodes: "/mobile/pv/episodes.php",
+    playlist: "/mobile/pv/playlist.php",
+    img: "pv/v",
+    epImg: "pvepimg"
+  },
+  hotstar: {
+    ott: "hs",
+    search: "/mobile/hs/search.php",
+    post: "/mobile/hs/post.php",
+    episodes: "/mobile/hs/episodes.php",
+    playlist: "/mobile/hs/playlist.php",
+    img: "hs/v",
+    epImg: "hsepimg"
+  },
+  disney: {
+    ott: "hs",
+    search: "/mobile/hs/search.php",
+    post: "/mobile/hs/post.php",
+    episodes: "/mobile/hs/episodes.php",
+    playlist: "/mobile/hs/playlist.php",
+    img: "hs/v",
+    epImg: "hsepimg"
+  }
+};
+var BASE_HEADERS = {
+  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+  "Accept-Language": "en-IN,en-US;q=0.9,en;q=0.8",
+  "Cache-Control": "max-age=0",
+  "Connection": "keep-alive",
+  "sec-ch-ua": '"Not(A:Brand";v="8", "Chromium";v="144", "Android WebView";v="144"',
+  "sec-ch-ua-mobile": "?0",
+  "sec-ch-ua-platform": '"Android"',
+  "Sec-Fetch-Dest": "document",
+  "Sec-Fetch-Mode": "navigate",
+  "Sec-Fetch-Site": "same-origin",
+  "Sec-Fetch-User": "?1",
+  "Upgrade-Insecure-Requests": "1",
+  "User-Agent": "Mozilla/5.0 (Linux; Android 13; Pixel 5 Build/TQ3A.230901.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/144.0.7559.132 Safari/537.36 /OS.Gatu v3.0",
+  "X-Requested-With": "XMLHttpRequest"
+};
 
-function __doomMergeHeaders(base, extra) {
-  var merged = {};
-  var key;
-  for (key in base || {}) merged[key] = base[key];
-  for (key in extra || {}) merged[key] = extra[key];
-  return merged;
-}
-
-function __doomWithTimeout(promise, timeoutMs) {
-  return new Promise(function(resolve, reject) {
-    var settled = false;
-    var timer = setTimeout(function() {
-      if (settled) return;
-      settled = true;
-      reject(new Error("timeout"));
-    }, timeoutMs);
-
-    Promise.resolve(promise).then(function(value) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      resolve(value);
-    }, function(error) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      reject(error);
+// src/netmirror/utils.js
+var globalCookie = "";
+var cookieTimestamp = 0;
+var COOKIE_EXPIRY = 54e6;
+function bypass() {
+  return __async(this, null, function* () {
+    const now = Date.now();
+    if (globalCookie && now - cookieTimestamp < COOKIE_EXPIRY) {
+      return globalCookie;
+    }
+    const uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == "x" ? r : r & 3 | 8;
+      return v.toString(16);
     });
-  });
-}
-
-function __doomLooksLikeHls(url, contentType) {
-  var normalizedUrl = String(url || "").toLowerCase();
-  var normalizedType = String(contentType || "").toLowerCase();
-  return normalizedUrl.indexOf(".m3u8") !== -1
-    || normalizedType.indexOf("mpegurl") !== -1
-    || normalizedType.indexOf("application/x-mpegurl") !== -1
-    || normalizedType.indexOf("vnd.apple.mpegurl") !== -1;
-}
-
-function __doomBuildProbeCacheKey(stream) {
-  var headers = stream && stream.headers ? stream.headers : {};
-  return [
-    stream && stream.url ? stream.url : "",
-    headers.Referer || headers.referer || "",
-    headers.Origin || headers.origin || ""
-  ].join("|");
-}
-
-function __doomGetCachedProbeResult(cacheKey) {
-  var entry = __doomProbeCache[cacheKey];
-  if (!entry) return null;
-  if (Date.now() - entry.timestamp > __doomProbeCacheTtlMs) {
-    delete __doomProbeCache[cacheKey];
-    return null;
-  }
-  return entry.ok;
-}
-
-function __doomSetCachedProbeResult(cacheKey, ok) {
-  __doomProbeCache[cacheKey] = {
-    ok: !!ok,
-    timestamp: Date.now()
-  };
-}
-
-function __doomResponseIsSeekable(response, url) {
-  if (!response || !response.ok) return false;
-  var headers = response.headers;
-  var contentType = headers && headers.get ? headers.get("content-type") || "" : "";
-  if (__doomLooksLikeHls(url, contentType)) return true;
-  var acceptRanges = headers && headers.get ? headers.get("accept-ranges") || "" : "";
-  var contentRange = headers && headers.get ? headers.get("content-range") || "" : "";
-  return response.status === 206
-    || /bytes/i.test(acceptRanges)
-    || /^bytes\s+/i.test(contentRange);
-}
-
-function __doomProbeStream(stream) {
-  if (!stream || !stream.url || typeof fetch !== "function") {
-    return Promise.resolve(false);
-  }
-
-  var cacheKey = __doomBuildProbeCacheKey(stream);
-  var cached = __doomGetCachedProbeResult(cacheKey);
-  if (cached !== null) {
-    return Promise.resolve(cached);
-  }
-
-  var url = stream.url;
-  var isHls = __doomLooksLikeHls(url, "");
-  var baseHeaders = __doomMergeHeaders({}, stream.headers || {});
-  var rangedHeaders = __doomMergeHeaders({}, baseHeaders);
-  if (!isHls && !rangedHeaders.Range && !rangedHeaders.range) {
-    rangedHeaders.Range = "bytes=0-1";
-  }
-
-  var attempts = [
-    { method: "GET", headers: isHls ? baseHeaders : rangedHeaders, redirect: "follow" },
-    { method: "HEAD", headers: baseHeaders, redirect: "follow" }
-  ];
-
-  function tryAttempt(index) {
-    if (index >= attempts.length) return Promise.resolve(false);
-    return __doomWithTimeout(fetch(url, attempts[index]), __doomProbeTimeoutMs)
-      .then(function(response) {
-        if (__doomResponseIsSeekable(response, url)) return true;
-        return tryAttempt(index + 1);
-      })
-      .catch(function() {
-        return tryAttempt(index + 1);
-      });
-  }
-
-  return tryAttempt(0).then(function(ok) {
-    __doomSetCachedProbeResult(cacheKey, ok);
-    return ok;
-  });
-}
-
-function __doomFilterSeekableStreams(streams, providerLabel) {
-  if (!Array.isArray(streams) || streams.length === 0) {
-    return Promise.resolve([]);
-  }
-
-  return Promise.all(streams.map(function(stream) {
-    return __doomProbeStream(stream)
-      .then(function(ok) { return { stream: stream, ok: ok }; })
-      .catch(function() { return { stream: stream, ok: false }; });
-  })).then(function(results) {
-    var filtered = results.filter(function(item) { return item.ok; }).map(function(item) { return item.stream; });
-    var label = providerLabel || "[Doom-addon]";
-    if (filtered.length === 0) {
-      console.log(label + " Seekable filter kept 0/" + streams.length + " streams; returning original streams as fallback");
-      return streams;
+    const headers = __spreadProps(__spreadValues({}, BASE_HEADERS), {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Origin": "https://net22.cc",
+      "Referer": "https://net22.cc/verify2"
+    });
+    const response = yield fetch(`${NETMIRROR_URL}/verify.php`, {
+      method: "POST",
+      headers,
+      body: `g-recaptcha-response=${uuid}`,
+      redirect: "manual"
+    });
+    const setCookie = response.headers.get("set-cookie");
+    if (setCookie) {
+      const match = setCookie.match(/t_hash_t=([^;]+)/);
+      if (match) {
+        globalCookie = match[1];
+        cookieTimestamp = Date.now();
+        return globalCookie;
+      }
     }
-    console.log(label + " Seekable filter kept " + filtered.length + "/" + streams.length + " streams");
-    return filtered;
+    throw new Error("Failed to extract t_hash_t cookie");
   });
 }
+function getUnixTime() {
+  return Math.floor(Date.now() / 1e3);
+}
 
-(function() {
-  if (typeof getStreams !== "function" || getStreams.__doomSeekableWrapped) {
-    return;
-  }
-
-  var __doomOriginalGetStreams = getStreams;
-  var __doomProviderLabel = typeof PLUGIN_TAG !== "undefined"
-    ? PLUGIN_TAG
-    : (typeof TAG !== "undefined" ? TAG : "[Doom-addon]");
-
-  var __doomWrappedGetStreams = function() {
-    return Promise.resolve(__doomOriginalGetStreams.apply(this, arguments))
-      .then(function(streams) {
-        return __doomFilterSeekableStreams(streams, __doomProviderLabel);
-      })
-      .catch(function(error) {
-        var message = error && error.message ? error.message : String(error);
-        console.error(__doomProviderLabel + " Seekable validation failed: " + message);
-        return [];
-      });
-  };
-
-  __doomWrappedGetStreams.__doomSeekableWrapped = true;
-  getStreams = __doomWrappedGetStreams;
-
-  if (typeof module !== "undefined" && module.exports) {
-    module.exports.getStreams = getStreams;
-  } else if (typeof global !== "undefined") {
-    global.getStreams = getStreams;
-  }
-})();
-
-// __DOOM_STREAM_NORMALIZATION__
-function __doomNormalizeHeaders(headers) {
-  if (!headers || typeof headers !== "object") return null;
-  var normalized = {};
-  var key;
-  for (key in headers) {
-    if (headers[key] !== undefined && headers[key] !== null && headers[key] !== "") {
-      normalized[key] = String(headers[key]);
+// src/netmirror/index.js
+function getStreams(tmdbId, mediaType, season, episode) {
+  return __async(this, null, function* () {
+    console.log(`[NetMirror] Fetching streams for ${mediaType} ${tmdbId}`);
+    try {
+      const cookie = yield bypass();
+      const cookies = `t_hash_t=${cookie}; hd=on`;
+      const tmdbType = mediaType === "tv" ? "tv" : "movie";
+      const tmdbResp = yield fetch(`https://api.themoviedb.org/3/${tmdbType}/${tmdbId}?api_key=${TMDB_API_KEY}`);
+      const tmdbData = yield tmdbResp.json();
+      const title = mediaType === "tv" ? tmdbData.name : tmdbData.title;
+      if (!title)
+        throw new Error("Could not fetch title from TMDB");
+      const platforms = ["netflix", "primevideo", "hotstar", "disney"];
+      for (const platformKey of platforms) {
+        const platform = PLATFORM_MAP[platformKey];
+        const streams = yield fetchFromPlatform(platformKey, title, mediaType, season, episode, cookies);
+        if (streams && streams.length > 0)
+          return streams;
+      }
+      return [];
+    } catch (error) {
+      console.error(`[NetMirror] Error: ${error.message}`);
+      return [];
     }
-  }
-  return Object.keys(normalized).length ? normalized : null;
+  });
 }
-
-function __doomLooksWebReady(url) {
-  var normalized = String(url || "").toLowerCase();
-  return normalized.indexOf("https://") === 0
-    && (normalized.indexOf(".mp4") !== -1 || normalized.indexOf("format=mp4") !== -1);
-}
-
-function __doomNormalizeStream(rawStream) {
-  if (!rawStream || typeof rawStream !== "object") return null;
-  var targetUrl = rawStream.url || rawStream.externalUrl;
-  if (!targetUrl || typeof targetUrl !== "string") return null;
-
-  var requestHeaders = __doomNormalizeHeaders(rawStream.headers);
-  var behaviorHints = {};
-  var key;
-  for (key in rawStream.behaviorHints || {}) behaviorHints[key] = rawStream.behaviorHints[key];
-
-  if (rawStream.fileName && !behaviorHints.filename) behaviorHints.filename = rawStream.fileName;
-  if (typeof rawStream.size === "number" && rawStream.size > 0 && !behaviorHints.videoSize) {
-    behaviorHints.videoSize = rawStream.size;
-  }
-  if (typeof rawStream.videoSize === "number" && rawStream.videoSize > 0 && !behaviorHints.videoSize) {
-    behaviorHints.videoSize = rawStream.videoSize;
-  }
-  if (!behaviorHints.bingeGroup) {
-    var providerId = typeof PLUGIN_TAG !== "undefined" ? PLUGIN_TAG : (typeof TAG !== "undefined" ? TAG : "doom-addon");
-    behaviorHints.bingeGroup = String(providerId).replace(/[^a-z0-9]+/gi, "-").toLowerCase();
-  }
-  if (!__doomLooksWebReady(targetUrl) || requestHeaders) behaviorHints.notWebReady = true;
-  if (requestHeaders) behaviorHints.proxyHeaders = { request: requestHeaders };
-
-  var description = rawStream.description || rawStream.title || rawStream.name || "Doom-addon stream";
-  return {
-    name: rawStream.name || "Doom-addon",
-    title: description,
-    description: description,
-    url: targetUrl,
-    behaviorHints: behaviorHints
-  };
-}
-
-(function() {
-  if (typeof getStreams !== "function" || getStreams.__doomNormalizedWrapped) return;
-
-  var __doomOriginalGetStreamsForNormalization = getStreams;
-  var __doomNormalizedGetStreams = function() {
-    return Promise.resolve(__doomOriginalGetStreamsForNormalization.apply(this, arguments))
-      .then(function(streams) {
-        if (!Array.isArray(streams)) return [];
-        return streams.map(__doomNormalizeStream).filter(Boolean);
+function fetchFromPlatform(platformKey, title, mediaType, season, episode, cookies) {
+  return __async(this, null, function* () {
+    const platform = PLATFORM_MAP[platformKey];
+    const searchUrl = `${NETMIRROR_URL}${platform.search}?s=${encodeURIComponent(title)}&t=${getUnixTime()}`;
+    const searchResp = yield fetch(searchUrl, {
+      headers: __spreadProps(__spreadValues({}, BASE_HEADERS), { Cookie: `${cookies}; ott=${platform.ott}` })
+    });
+    const searchData = yield searchResp.json();
+    if (!searchData.searchResult || searchData.searchResult.length === 0)
+      return null;
+    const result = searchData.searchResult[0];
+    const contentId = result.id;
+    const postUrl = `${NETMIRROR_URL}${platform.post}?id=${contentId}&t=${getUnixTime()}`;
+    const postResp = yield fetch(postUrl, {
+      headers: __spreadProps(__spreadValues({}, BASE_HEADERS), { Cookie: `${cookies}; ott=${platform.ott}` })
+    });
+    const postData = yield postResp.json();
+    let targetId = contentId;
+    if (mediaType === "tv") {
+      const episodes = yield getAllEpisodes(contentId, postData, platform, cookies);
+      const targetEp = episodes.find((ep) => {
+        if (!ep)
+          return false;
+        const s = parseInt(ep.s.replace("S", ""));
+        const e = parseInt(ep.ep.replace("E", ""));
+        return s === season && e === episode;
       });
-  };
-
-  __doomNormalizedGetStreams.__doomNormalizedWrapped = true;
-  getStreams = __doomNormalizedGetStreams;
-
-  if (typeof module !== "undefined" && module.exports) {
-    module.exports.getStreams = getStreams;
-  } else if (typeof global !== "undefined") {
-    global.getStreams = getStreams;
-  }
-})();
+      if (targetEp) {
+        targetId = targetEp.id;
+      } else {
+        return null;
+      }
+    }
+    const playlistUrl = `${NETMIRROR_URL}${platform.playlist}?id=${targetId}&t=${encodeURIComponent(title)}&tm=${getUnixTime()}`;
+    const playlistResp = yield fetch(playlistUrl, {
+      headers: __spreadProps(__spreadValues({}, BASE_HEADERS), { Cookie: `${cookies}; ott=${platform.ott}` })
+    });
+    const playlist = yield playlistResp.json();
+    const streams = [];
+    if (Array.isArray(playlist)) {
+      playlist.forEach((item) => {
+        if (!item.sources)
+          return;
+        item.sources.forEach((source) => {
+          streams.push({
+            name: `NetMirror (${platformKey.charAt(0).toUpperCase() + platformKey.slice(1)})`,
+            title: `${title} ${source.label}`,
+            url: source.file.startsWith("http") ? source.file : `${NETMIRROR_URL}${source.file.startsWith("/") ? "" : "/"}${source.file}`,
+            quality: source.label,
+            headers: { Referer: `${NETMIRROR_URL}/home`, Cookie: "hd=on" }
+          });
+        });
+      });
+    }
+    return streams;
+  });
+}
+function getAllEpisodes(contentId, postData, platform, cookies) {
+  return __async(this, null, function* () {
+    const episodes = [...postData.episodes || []].filter((e) => e !== null);
+    if (postData.nextPageShow === 1 && postData.nextPageSeason) {
+      const more = yield fetchEpisodesPage(contentId, postData.nextPageSeason, 2, platform, cookies);
+      episodes.push(...more);
+    }
+    if (postData.season && postData.season.length > 1) {
+      for (let i = 0; i < postData.season.length - 1; i++) {
+        const season = postData.season[i];
+        const more = yield fetchEpisodesPage(contentId, season.id, 1, platform, cookies);
+        episodes.push(...more);
+      }
+    }
+    return episodes;
+  });
+}
+function fetchEpisodesPage(contentId, seasonId, page, platform, cookies) {
+  return __async(this, null, function* () {
+    const episodes = [];
+    let pg = page;
+    while (true) {
+      const url = `${NETMIRROR_URL}${platform.episodes}?s=${seasonId}&series=${contentId}&t=${getUnixTime()}&page=${pg}`;
+      const resp = yield fetch(url, {
+        headers: __spreadProps(__spreadValues({}, BASE_HEADERS), { Cookie: `${cookies}; ott=${platform.ott}` })
+      });
+      const data = yield resp.json();
+      if (data.episodes) {
+        episodes.push(...data.episodes.filter((e) => e !== null));
+      }
+      if (data.nextPageShow === 0)
+        break;
+      pg++;
+    }
+    return episodes;
+  });
+}
+module.exports = { getStreams };

@@ -1,254 +1,413 @@
-const _0x47b418=_0x4797;function _0x4797(_0xfe2e04,_0x32589a){_0xfe2e04=_0xfe2e04-0x147;const _0x2d1755=_0x2d17();let _0x4797cb=_0x2d1755[_0xfe2e04];if(_0x4797['BEmSBY']===undefined){var _0x28a1d3=function(_0x224b8a){const _0x5761d7='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x14d75f='',_0x59a628='';for(let _0x170348=0x0,_0x42ad1b,_0x579eec,_0x500565=0x0;_0x579eec=_0x224b8a['charAt'](_0x500565++);~_0x579eec&&(_0x42ad1b=_0x170348%0x4?_0x42ad1b*0x40+_0x579eec:_0x579eec,_0x170348++%0x4)?_0x14d75f+=String['fromCharCode'](0xff&_0x42ad1b>>(-0x2*_0x170348&0x6)):0x0){_0x579eec=_0x5761d7['indexOf'](_0x579eec);}for(let _0x56dbef=0x0,_0x4ebc99=_0x14d75f['length'];_0x56dbef<_0x4ebc99;_0x56dbef++){_0x59a628+='%'+('00'+_0x14d75f['charCodeAt'](_0x56dbef)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x59a628);};_0x4797['PnzBHp']=_0x28a1d3,_0x4797['hFpVZz']={},_0x4797['BEmSBY']=!![];}const _0x42979d=_0x2d1755[0x0],_0x3d384e=_0xfe2e04+_0x42979d,_0x435e9c=_0x4797['hFpVZz'][_0x3d384e];return!_0x435e9c?(_0x4797cb=_0x4797['PnzBHp'](_0x4797cb),_0x4797['hFpVZz'][_0x3d384e]=_0x4797cb):_0x4797cb=_0x435e9c,_0x4797cb;}(function(_0x37b3d0,_0x11602b){const _0x473559=_0x4797,_0x27d361=_0x37b3d0();while(!![]){try{const _0x586698=parseInt(_0x473559(0x151))/0x1*(parseInt(_0x473559(0x153))/0x2)+-parseInt(_0x473559(0x159))/0x3+parseInt(_0x473559(0x163))/0x4+parseInt(_0x473559(0x16f))/0x5*(parseInt(_0x473559(0x16b))/0x6)+parseInt(_0x473559(0x17e))/0x7*(parseInt(_0x473559(0x161))/0x8)+parseInt(_0x473559(0x174))/0x9*(parseInt(_0x473559(0x16e))/0xa)+parseInt(_0x473559(0x155))/0xb*(-parseInt(_0x473559(0x16d))/0xc);if(_0x586698===_0x11602b)break;else _0x27d361['push'](_0x27d361['shift']());}catch(_0x305350){_0x27d361['push'](_0x27d361['shift']());}}}(_0x2d17,0x9682c));var __async=(_0x14d75f,_0x59a628,_0x170348)=>{return new Promise((_0x42ad1b,_0x579eec)=>{const _0x106c82=_0x4797;var _0x500565=_0xceca32=>{const _0x59a844=_0x4797;try{_0x4ebc99(_0x170348[_0x59a844(0x165)](_0xceca32));}catch(_0x2e936f){_0x579eec(_0x2e936f);}},_0x56dbef=_0x37f12d=>{const _0x2addda=_0x4797;try{_0x4ebc99(_0x170348[_0x2addda(0x16c)](_0x37f12d));}catch(_0x131442){_0x579eec(_0x131442);}},_0x4ebc99=_0xc29443=>_0xc29443[_0x106c82(0x162)]?_0x42ad1b(_0xc29443[_0x106c82(0x157)]):Promise['resolve'](_0xc29443['value'])[_0x106c82(0x14d)](_0x500565,_0x56dbef);_0x4ebc99((_0x170348=_0x170348[_0x106c82(0x149)](_0x14d75f,_0x59a628))[_0x106c82(0x165)]());});},CONFIG={'SITE_URL':_0x47b418(0x15e),'BACKEND_URL':typeof __BACKEND_URL__!==_0x47b418(0x179)?__BACKEND_URL__:'https://piratezoro9-mushi-master.hf.space','TIMEOUT_MS':0xea60,'AUTH_KEY':'Shikari@95'};function backendFetch(_0x33491b,_0x3edeef){const _0x12f076=_0x47b418;return fetch(CONFIG[_0x12f076(0x171)]+_0x33491b,{'method':_0x12f076(0x177),'headers':{'Content-Type':_0x12f076(0x147),'X-Api-Key':CONFIG[_0x12f076(0x14b)]},'body':JSON[_0x12f076(0x170)](_0x3edeef),'timeout':CONFIG[_0x12f076(0x158)]});}function manifest(){const _0x226ff2=_0x47b418;return{'id':_0x226ff2(0x160),'name':'4KHDHub','description':_0x226ff2(0x166),'version':_0x226ff2(0x156),'logo':'https://4khdhub.dad/favicon-96x96.png','background':_0x226ff2(0x173),'types':['movie',_0x226ff2(0x16a)],'resources':['catalog',_0x226ff2(0x169)],'idPrefixes':['tt',_0x226ff2(0x178)]};}function search(_0x1d18d1,_0x3b0b33){return __async(this,null,function*(){const _0x4ae06c=_0x4797;try{const _0x2ba228={'query':_0x1d18d1,'site':_0x4ae06c(0x176)};_0x3b0b33&&_0x3b0b33!=='all'&&(_0x2ba228['type']=_0x3b0b33==='tv'?_0x4ae06c(0x16a):_0x3b0b33);const _0x4f077=yield backendFetch(_0x4ae06c(0x154),_0x2ba228);if(_0x4f077['ok']){const _0x185bbf=yield _0x4f077[_0x4ae06c(0x17b)]();if(!_0x185bbf[_0x4ae06c(0x14f)]||!_0x185bbf['results'])return[];return _0x185bbf[_0x4ae06c(0x152)][_0x4ae06c(0x17c)](_0x82914c=>({'id':_0x4ae06c(0x178)+encodeURIComponent(_0x82914c[_0x4ae06c(0x150)]),'name':_0x82914c[_0x4ae06c(0x172)]+(_0x82914c[_0x4ae06c(0x167)]?'\x20('+_0x82914c[_0x4ae06c(0x167)]+')':''),'type':_0x82914c[_0x4ae06c(0x17a)]===_0x4ae06c(0x16a)?'tv':_0x4ae06c(0x15c),'poster':_0x82914c[_0x4ae06c(0x14e)]&&_0x82914c[_0x4ae06c(0x14e)][_0x4ae06c(0x15f)](_0x4ae06c(0x15b))?_0x82914c[_0x4ae06c(0x14e)]:'','posterShape':'poster','url':_0x82914c[_0x4ae06c(0x150)]}));}}catch(_0x4ca6c1){console['log'](_0x4ae06c(0x148),_0x4ca6c1[_0x4ae06c(0x14a)]);}return[];});}function getStreams(_0x4c7ae0,_0x4dd669,_0x3349f3,_0x43351e){return __async(this,null,function*(){const _0x27e5e9=_0x4797;try{const _0x573911=String(_0x4c7ae0)['replace'](/^tt/,''),_0x351076={'site':_0x27e5e9(0x176),'tmdb_id':_0x573911,'type':_0x4dd669==='tv'?_0x27e5e9(0x16a):_0x27e5e9(0x15c),'season':Number(_0x3349f3)||0x0,'episode':Number(_0x43351e)||0x0},_0x511bc6=yield backendFetch(_0x27e5e9(0x17d),_0x351076);if(_0x511bc6['ok']){const _0x13d615=yield _0x511bc6['json']();if(_0x13d615[_0x27e5e9(0x14f)]&&_0x13d615['streams'])return _0x13d615[_0x27e5e9(0x15d)];}}catch(_0x146ef9){console['log'](_0x27e5e9(0x168),_0x146ef9[_0x27e5e9(0x14a)]);}return[];});}module[_0x47b418(0x14c)]={'manifest':manifest,'search':search,'getStreams':getStreams},globalThis[_0x47b418(0x164)]=manifest,globalThis[_0x47b418(0x175)]=search,globalThis[_0x47b418(0x15a)]=getStreams;function _0x2d17(){const _0x37776c=['Bw92Awu','C3rYzwfTCW','Ahr0Chm6lY80A2HKAhvIlMrHza','C3rHCNrZv2L0Aa','B3jNlM51DMLVlJrRAgrODwi','mty5mJHyALbxvxy','zg9Uzq','mJGWmJm0ngLzEhzvsW','BwfUAwzLC3q','BMv4Da','u3rYzwfTig1VDMLLCYaMihnLCMLLCYbMCM9TidrRAgrODwiGAw4GneSGsers','EwvHCG','wZrRAgrODwjDiejHy2TLBMqGzxH0CMfJDcbMywLSzwq6','C3rYzwfT','C2vYAwvZ','mJq3odm4nhP1y2z3vq','DgHYB3C','odK5ndbwyxrhsLC','mtaYmdbdv2POzMW','nuH3C1L5Dq','C3rYAw5NAwz5','qKfds0vorf9vuKW','DgL0Bgu','iZfHmweYzq','ndGYngPcAhPXAq','C2vHCMnO','ngTOzgH1yG','ue9tva','ngTOzgH1yI0','Dw5KzwzPBMvK','DhLWzq','ANnVBG','BwfW','l2v4DhjHy3q','mZq3oxL4qKTeyG','yxbWBgLJyxrPB24VANnVBG','wZrRAgrODwjDiejHy2TLBMqGC2vHCMnOigzHAwXLzdO','yxbWBhK','BwvZC2fNzq','qvvusf9lrvK','zxHWB3j0CW','DgHLBG','Cg9ZDgvY','C3vJy2vZCW','DxjS','mtu5thbQs1fr','CMvZDwX0CW','otCZoffiuxfLDW','l3nLyxjJAa','mZCYoxb4uffntW','mY4WlJa','DMfSDwu','veLnru9vvf9nuW','otG2nJG4tMPPBhHI','z2v0u3rYzwfTCW','Ahr0Ca'];_0x2d17=function(){return _0x37776c;};return _0x2d17();}
+/**
+ * 4khdhub - Built from src/4khdhub/
+ * Generated: 2025-12-31T21:33:16.718Z
+ */
+"use strict";
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
 
-// __DOOM_SEEKABLE_VALIDATION__
-var __doomProbeCache = Object.create(null);
-var __doomProbeCacheTtlMs = 10 * 60 * 1000;
-var __doomProbeTimeoutMs = 6 * 1000;
+// src/4khdhub/constants.js
+var BASE_URL = "https://4khdhub.click";
+var TMDB_API_KEY = "439c478a771f35c05022f9feabcca01c";
+var USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36";
+var DOMAINS_URL = "https://raw.githubusercontent.com/ummarm/Doom-addon-v1/main/domains.json";
 
-function __doomMergeHeaders(base, extra) {
-  var merged = {};
-  var key;
-  for (key in base || {}) merged[key] = base[key];
-  for (key in extra || {}) merged[key] = extra[key];
-  return merged;
-}
-
-function __doomWithTimeout(promise, timeoutMs) {
-  return new Promise(function(resolve, reject) {
-    var settled = false;
-    var timer = setTimeout(function() {
-      if (settled) return;
-      settled = true;
-      reject(new Error("timeout"));
-    }, timeoutMs);
-
-    Promise.resolve(promise).then(function(value) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      resolve(value);
-    }, function(error) {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      reject(error);
-    });
+// src/4khdhub/utils.js
+var domainCache = { url: BASE_URL, ts: 0 };
+function fetchLatestDomain() {
+  return __async(this, null, function* () {
+    const now = Date.now();
+    if (now - domainCache.ts < 36e5) return domainCache.url;
+    try {
+      const response = yield fetch(DOMAINS_URL);
+      const data = yield response.json();
+      if (data && data["4khdhub"]) {
+        domainCache.url = data["4khdhub"];
+        domainCache.ts = now;
+      }
+    } catch (e) {}
+    return domainCache.url;
   });
 }
 
-function __doomLooksLikeHls(url, contentType) {
-  var normalizedUrl = String(url || "").toLowerCase();
-  var normalizedType = String(contentType || "").toLowerCase();
-  return normalizedUrl.indexOf(".m3u8") !== -1
-    || normalizedType.indexOf("mpegurl") !== -1
-    || normalizedType.indexOf("application/x-mpegurl") !== -1
-    || normalizedType.indexOf("vnd.apple.mpegurl") !== -1;
+// src/4khdhub/http.js
+function fetchText(_0) {
+  return __async(this, arguments, function* (url, options = {}) {
+    try {
+      const response = yield fetch(url, {
+        headers: __spreadValues({
+          "User-Agent": USER_AGENT
+        }, options.headers)
+      });
+      return yield response.text();
+    } catch (err) {
+      console.log(`[4KHDHub] Request failed for ${url}: ${err.message}`);
+      return null;
+    }
+  });
 }
 
-function __doomBuildProbeCacheKey(stream) {
-  var headers = stream && stream.headers ? stream.headers : {};
-  return [
-    stream && stream.url ? stream.url : "",
-    headers.Referer || headers.referer || "",
-    headers.Origin || headers.origin || ""
-  ].join("|");
+// src/4khdhub/tmdb.js
+function getTmdbDetails(tmdbId, type) {
+  return __async(this, null, function* () {
+    const isSeries = type === "series" || type === "tv";
+    const endpoint = isSeries ? "tv" : "movie";
+    const url = `https://api.themoviedb.org/3/${endpoint}/${tmdbId}?api_key=${TMDB_API_KEY}`;
+    console.log(`[4KHDHub] Fetching TMDB details from: ${url}`);
+    try {
+      const response = yield fetch(url);
+      const data = yield response.json();
+      if (isSeries) {
+        return {
+          title: data.name,
+          year: data.first_air_date ? parseInt(data.first_air_date.split("-")[0]) : 0
+        };
+      } else {
+        return {
+          title: data.title,
+          year: data.release_date ? parseInt(data.release_date.split("-")[0]) : 0
+        };
+      }
+    } catch (error) {
+      console.log(`[4KHDHub] TMDB request failed: ${error.message}`);
+      return null;
+    }
+  });
 }
 
-function __doomGetCachedProbeResult(cacheKey) {
-  var entry = __doomProbeCache[cacheKey];
-  if (!entry) return null;
-  if (Date.now() - entry.timestamp > __doomProbeCacheTtlMs) {
-    delete __doomProbeCache[cacheKey];
+// src/4khdhub/utils.js
+function atob(input) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+  let str = String(input).replace(/=+$/, "");
+  if (str.length % 4 === 1) {
+    throw new Error("'atob' failed: The string to be decoded is not correctly encoded.");
+  }
+  let output = "";
+  for (let bc = 0, bs, buffer, i = 0; buffer = str.charAt(i++); ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer, bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0) {
+    buffer = chars.indexOf(buffer);
+  }
+  return output;
+}
+function rot13Cipher(str) {
+  return str.replace(/[a-zA-Z]/g, function(c) {
+    return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+  });
+}
+function levenshteinDistance(s, t) {
+  if (s === t)
+    return 0;
+  const n = s.length;
+  const m = t.length;
+  if (n === 0)
+    return m;
+  if (m === 0)
+    return n;
+  const d = [];
+  for (let i = 0; i <= n; i++) {
+    d[i] = [];
+    d[i][0] = i;
+  }
+  for (let j = 0; j <= m; j++) {
+    d[0][j] = j;
+  }
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      const cost = s.charAt(i - 1) === t.charAt(j - 1) ? 0 : 1;
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+    }
+  }
+  return d[n][m];
+}
+function parseBytes(val) {
+  if (typeof val === "number")
+    return val;
+  if (!val)
+    return 0;
+  const match = val.match(/^([0-9.]+)\s*([a-zA-Z]+)$/);
+  if (!match)
+    return 0;
+  const num = parseFloat(match[1]);
+  const unit = match[2].toLowerCase();
+  let multiplier = 1;
+  if (unit.indexOf("k") === 0)
+    multiplier = 1024;
+  else if (unit.indexOf("m") === 0)
+    multiplier = 1024 * 1024;
+  else if (unit.indexOf("g") === 0)
+    multiplier = 1024 * 1024 * 1024;
+  else if (unit.indexOf("t") === 0)
+    multiplier = 1024 * 1024 * 1024 * 1024;
+  return num * multiplier;
+}
+function formatBytes(val) {
+  if (val === 0)
+    return "0 B";
+  const k = 1024;
+  const sizes = ["B", "KB", "MB", "GB", "TB"];
+  let i = Math.floor(Math.log(val) / Math.log(k));
+  if (i < 0)
+    i = 0;
+  return parseFloat((val / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+}
+
+// src/4khdhub/search.js
+var cheerio = require("cheerio-without-node-native");
+function fetchPageUrl(name, year, isSeries) {
+  return __async(this, null, function* () {
+    const domain = yield fetchLatestDomain();
+    const searchUrl = `${domain}/?s=${encodeURIComponent(name + " " + year)}`;
+    console.log(`[4KHDHub] Search Request URL: ${searchUrl}`);
+    const html = yield fetchText(searchUrl);
+    if (!html) {
+      console.log("[4KHDHub] Search failed: No HTML response");
+      return null;
+    }
+    const $ = cheerio.load(html);
+    const targetType = isSeries ? "Series" : "Movies";
+    console.log(`[4KHDHub] Parsing search results for type: ${targetType}`);
+    const matchingCards = $(".movie-card").filter((_, el) => {
+      const hasFormat = $(el).find(`.movie-card-format:contains("${targetType}")`).length > 0;
+      if (!hasFormat) {
+      }
+      return hasFormat;
+    }).filter((_, el) => {
+      const metaText = $(el).find(".movie-card-meta").text();
+      const movieCardYear = parseInt(metaText);
+      const yearMatch = !isNaN(movieCardYear) && Math.abs(movieCardYear - year) <= 1;
+      if (!yearMatch) {
+        console.log(`[4KHDHub] Skip: Year mismatch (${movieCardYear} vs ${year}) - ${$(el).find(".movie-card-title").text().trim()}`);
+      }
+      return yearMatch;
+    }).filter((_, el) => {
+      const movieCardTitle = $(el).find(".movie-card-title").text().replace(/\[.*?]/g, "").trim();
+      const distance = levenshteinDistance(movieCardTitle.toLowerCase(), name.toLowerCase());
+      const match = distance < 5;
+      console.log(`[4KHDHub] Checking: "${movieCardTitle}" (Dist: ${distance}) vs "${name}"`);
+      return match;
+    }).map((_, el) => {
+      let href = $(el).attr("href");
+      if (href && !href.startsWith("http")) {
+        href = domain + (href.startsWith("/") ? "" : "/") + href;
+      }
+      return href;
+    }).get();
+    if (matchingCards.length === 0) {
+      console.log("[4KHDHub] No matching cards found after filtering");
+    } else {
+      console.log(`[4KHDHub] Found ${matchingCards.length} matching cards`);
+    }
+    return matchingCards.length > 0 ? matchingCards[0] : null;
+  });
+}
+
+// src/4khdhub/extractor.js
+var cheerio2 = require("cheerio-without-node-native");
+function resolveRedirectUrl(redirectUrl) {
+  return __async(this, null, function* () {
+    const redirectHtml = yield fetchText(redirectUrl);
+    if (!redirectHtml)
+      return null;
+    try {
+      const redirectDataMatch = redirectHtml.match(/'o','(.*?)'/);
+      if (!redirectDataMatch)
+        return null;
+      const step1 = atob(redirectDataMatch[1]);
+      const step2 = atob(step1);
+      const step3 = rot13Cipher(step2);
+      const step4 = atob(step3);
+      const redirectData = JSON.parse(step4);
+      if (redirectData && redirectData.o) {
+        return atob(redirectData.o);
+      }
+    } catch (e) {
+      console.log(`[4KHDHub] Error resolving redirect: ${e.message}`);
+    }
     return null;
-  }
-  return entry.ok;
-}
-
-function __doomSetCachedProbeResult(cacheKey, ok) {
-  __doomProbeCache[cacheKey] = {
-    ok: !!ok,
-    timestamp: Date.now()
-  };
-}
-
-function __doomResponseIsSeekable(response, url) {
-  if (!response || !response.ok) return false;
-  var headers = response.headers;
-  var contentType = headers && headers.get ? headers.get("content-type") || "" : "";
-  if (__doomLooksLikeHls(url, contentType)) return true;
-  var acceptRanges = headers && headers.get ? headers.get("accept-ranges") || "" : "";
-  var contentRange = headers && headers.get ? headers.get("content-range") || "" : "";
-  return response.status === 206
-    || /bytes/i.test(acceptRanges)
-    || /^bytes\s+/i.test(contentRange);
-}
-
-function __doomProbeStream(stream) {
-  if (!stream || !stream.url || typeof fetch !== "function") {
-    return Promise.resolve(false);
-  }
-
-  var cacheKey = __doomBuildProbeCacheKey(stream);
-  var cached = __doomGetCachedProbeResult(cacheKey);
-  if (cached !== null) {
-    return Promise.resolve(cached);
-  }
-
-  var url = stream.url;
-  var isHls = __doomLooksLikeHls(url, "");
-  var baseHeaders = __doomMergeHeaders({}, stream.headers || {});
-  var rangedHeaders = __doomMergeHeaders({}, baseHeaders);
-  if (!isHls && !rangedHeaders.Range && !rangedHeaders.range) {
-    rangedHeaders.Range = "bytes=0-1";
-  }
-
-  var attempts = [
-    { method: "GET", headers: isHls ? baseHeaders : rangedHeaders, redirect: "follow" },
-    { method: "HEAD", headers: baseHeaders, redirect: "follow" }
-  ];
-
-  function tryAttempt(index) {
-    if (index >= attempts.length) return Promise.resolve(false);
-    return __doomWithTimeout(fetch(url, attempts[index]), __doomProbeTimeoutMs)
-      .then(function(response) {
-        if (__doomResponseIsSeekable(response, url)) return true;
-        return tryAttempt(index + 1);
-      })
-      .catch(function() {
-        return tryAttempt(index + 1);
-      });
-  }
-
-  return tryAttempt(0).then(function(ok) {
-    __doomSetCachedProbeResult(cacheKey, ok);
-    return ok;
   });
 }
-
-function __doomFilterSeekableStreams(streams, providerLabel) {
-  if (!Array.isArray(streams) || streams.length === 0) {
-    return Promise.resolve([]);
-  }
-
-  return Promise.all(streams.map(function(stream) {
-    return __doomProbeStream(stream)
-      .then(function(ok) { return { stream: stream, ok: ok }; })
-      .catch(function() { return { stream: stream, ok: false }; });
-  })).then(function(results) {
-    var filtered = results.filter(function(item) { return item.ok; }).map(function(item) { return item.stream; });
-    var label = providerLabel || "[Doom-addon]";
-    if (filtered.length === 0) {
-      console.log(label + " Seekable filter kept 0/" + streams.length + " streams; returning original streams as fallback");
-      return streams;
+function extractSourceResults($, el) {
+  return __async(this, null, function* () {
+    const localHtml = $(el).html();
+    const sizeMatch = localHtml.match(/([\d.]+ ?[GM]B)/);
+    const heightMatch = localHtml.match(/\d{3,}p/);
+    const title = $(el).find(".file-title, .episode-file-title").text().trim();
+    let height = heightMatch ? parseInt(heightMatch[0]) : 0;
+    if (height === 0 && (title.includes("4K") || title.includes("4k") || localHtml.includes("4K") || localHtml.includes("4k"))) {
+      height = 2160;
     }
-    console.log(label + " Seekable filter kept " + filtered.length + "/" + streams.length + " streams");
-    return filtered;
+    const meta = {
+      bytes: sizeMatch ? parseBytes(sizeMatch[1]) : 0,
+      height,
+      title
+    };
+    const hubCloudLink = $(el).find("a").filter((_, a) => $(a).text().includes("HubCloud")).attr("href");
+    if (hubCloudLink) {
+      const resolved = yield resolveRedirectUrl(hubCloudLink);
+      return { url: resolved, meta };
+    }
+    const hubDriveLink = $(el).find("a").filter((_, a) => $(a).text().includes("HubDrive")).attr("href");
+    if (hubDriveLink) {
+      const resolvedDrive = yield resolveRedirectUrl(hubDriveLink);
+      if (resolvedDrive) {
+        const hubDriveHtml = yield fetchText(resolvedDrive);
+        if (hubDriveHtml) {
+          const $2 = cheerio2.load(hubDriveHtml);
+          const innerCloudLink = $2('a:contains("HubCloud")').attr("href");
+          if (innerCloudLink) {
+            return { url: innerCloudLink, meta };
+          }
+        }
+      }
+    }
+    return null;
+  });
+}
+function extractHubCloud(hubCloudUrl, baseMeta) {
+  return __async(this, null, function* () {
+    if (!hubCloudUrl)
+      return [];
+    const redirectHtml = yield fetchText(hubCloudUrl, { headers: { Referer: hubCloudUrl } });
+    if (!redirectHtml)
+      return [];
+    const redirectUrlMatch = redirectHtml.match(/var url ?= ?'(.*?)'/);
+    if (!redirectUrlMatch)
+      return [];
+    const finalLinksUrl = redirectUrlMatch[1];
+    const linksHtml = yield fetchText(finalLinksUrl, { headers: { Referer: hubCloudUrl } });
+    if (!linksHtml)
+      return [];
+    const $ = cheerio2.load(linksHtml);
+    const results = [];
+    const sizeText = $("#size").text();
+    const titleText = $("title").text().trim();
+    const currentMeta = __spreadProps(__spreadValues({}, baseMeta), {
+      bytes: parseBytes(sizeText) || baseMeta.bytes,
+      title: titleText || baseMeta.title
+    });
+    $("a").each((_, el) => {
+      const text = $(el).text();
+      const href = $(el).attr("href");
+      if (!href)
+        return;
+      if (text.includes("FSL") || text.includes("Download File")) {
+        results.push({
+          source: "FSL",
+          url: href,
+          meta: currentMeta
+        });
+      } else if (text.includes("PixelServer")) {
+        const pixelUrl = href.replace("/u/", "/api/file/");
+        results.push({
+          source: "PixelServer",
+          url: pixelUrl,
+          meta: currentMeta
+        });
+      }
+    });
+    return results;
   });
 }
 
-(function() {
-  if (typeof getStreams !== "function" || getStreams.__doomSeekableWrapped) {
-    return;
-  }
-
-  var __doomOriginalGetStreams = getStreams;
-  var __doomProviderLabel = typeof PLUGIN_TAG !== "undefined"
-    ? PLUGIN_TAG
-    : (typeof TAG !== "undefined" ? TAG : "[Doom-addon]");
-
-  var __doomWrappedGetStreams = function() {
-    return Promise.resolve(__doomOriginalGetStreams.apply(this, arguments))
-      .then(function(streams) {
-        return __doomFilterSeekableStreams(streams, __doomProviderLabel);
-      })
-      .catch(function(error) {
-        var message = error && error.message ? error.message : String(error);
-        console.error(__doomProviderLabel + " Seekable validation failed: " + message);
+// src/4khdhub/index.js
+var cheerio3 = require("cheerio-without-node-native");
+function getStreams(tmdbId, type, season, episode) {
+  return __async(this, null, function* () {
+    const tmdbDetails = yield getTmdbDetails(tmdbId, type);
+    if (!tmdbDetails)
+      return [];
+    const { title, year } = tmdbDetails;
+    console.log(`[4KHDHub] Search: ${title} (${year})`);
+    const isSeries = type === "series" || type === "tv";
+    const pageUrl = yield fetchPageUrl(title, year, isSeries);
+    if (!pageUrl) {
+      console.log("[4KHDHub] Page not found");
+      return [];
+    }
+    console.log(`[4KHDHub] Found page: ${pageUrl}`);
+    const html = yield fetchText(pageUrl);
+    if (!html)
+      return [];
+    const $ = cheerio3.load(html);
+    const itemsToProcess = [];
+    if (isSeries && season && episode) {
+      const seasonStr = "S" + String(season).padStart(2, "0");
+      const episodeStr = "Episode-" + String(episode).padStart(2, "0");
+      $(".episode-item").each((_, el) => {
+        if ($(".episode-title", el).text().includes(seasonStr)) {
+          const downloadItems = $(".episode-download-item", el).filter((_2, item) => $(item).text().includes(episodeStr));
+          downloadItems.each((_2, item) => {
+            itemsToProcess.push(item);
+          });
+        }
+      });
+    } else {
+      $(".download-item").each((_, el) => {
+        itemsToProcess.push(el);
+      });
+    }
+    console.log(`[4KHDHub] Processing ${itemsToProcess.length} items`);
+    const streamPromises = itemsToProcess.map((item) => __async(this, null, function* () {
+      try {
+        const sourceResult = yield extractSourceResults($, item);
+        if (sourceResult && sourceResult.url) {
+          console.log(`[4KHDHub] Extracting from HubCloud: ${sourceResult.url}`);
+          const extractedLinks = yield extractHubCloud(sourceResult.url, sourceResult.meta);
+          return extractedLinks.map((link) => ({
+            name: `4KHDHub - ${link.source}${sourceResult.meta.height ? ` ${sourceResult.meta.height}p` : ""}`,
+            title: `${link.meta.title}
+${formatBytes(link.meta.bytes || 0)}`,
+            url: link.url,
+            quality: sourceResult.meta.height ? `${sourceResult.meta.height}p` : void 0,
+            behaviorHints: {
+              bingeGroup: `4khdhub-${link.source}`
+            }
+          }));
+        }
         return [];
-      });
-  };
-
-  __doomWrappedGetStreams.__doomSeekableWrapped = true;
-  getStreams = __doomWrappedGetStreams;
-
-  if (typeof module !== "undefined" && module.exports) {
-    module.exports.getStreams = getStreams;
-  } else if (typeof global !== "undefined") {
-    global.getStreams = getStreams;
-  }
-})();
-
-// __DOOM_STREAM_NORMALIZATION__
-function __doomNormalizeHeaders(headers) {
-  if (!headers || typeof headers !== "object") return null;
-  var normalized = {};
-  var key;
-  for (key in headers) {
-    if (headers[key] !== undefined && headers[key] !== null && headers[key] !== "") {
-      normalized[key] = String(headers[key]);
-    }
-  }
-  return Object.keys(normalized).length ? normalized : null;
+      } catch (err) {
+        console.log(`[4KHDHub] Item processing error: ${err.message}`);
+        return [];
+      }
+    }));
+    const results = yield Promise.all(streamPromises);
+    return results.reduce((acc, val) => acc.concat(val), []);
+  });
 }
-
-function __doomLooksWebReady(url) {
-  var normalized = String(url || "").toLowerCase();
-  return normalized.indexOf("https://") === 0
-    && (normalized.indexOf(".mp4") !== -1 || normalized.indexOf("format=mp4") !== -1);
-}
-
-function __doomNormalizeStream(rawStream) {
-  if (!rawStream || typeof rawStream !== "object") return null;
-  var targetUrl = rawStream.url || rawStream.externalUrl;
-  if (!targetUrl || typeof targetUrl !== "string") return null;
-
-  var requestHeaders = __doomNormalizeHeaders(rawStream.headers);
-  var behaviorHints = {};
-  var key;
-  for (key in rawStream.behaviorHints || {}) behaviorHints[key] = rawStream.behaviorHints[key];
-
-  if (rawStream.fileName && !behaviorHints.filename) behaviorHints.filename = rawStream.fileName;
-  if (typeof rawStream.size === "number" && rawStream.size > 0 && !behaviorHints.videoSize) {
-    behaviorHints.videoSize = rawStream.size;
-  }
-  if (typeof rawStream.videoSize === "number" && rawStream.videoSize > 0 && !behaviorHints.videoSize) {
-    behaviorHints.videoSize = rawStream.videoSize;
-  }
-  if (!behaviorHints.bingeGroup) {
-    var providerId = typeof PLUGIN_TAG !== "undefined" ? PLUGIN_TAG : (typeof TAG !== "undefined" ? TAG : "doom-addon");
-    behaviorHints.bingeGroup = String(providerId).replace(/[^a-z0-9]+/gi, "-").toLowerCase();
-  }
-  if (!__doomLooksWebReady(targetUrl) || requestHeaders) behaviorHints.notWebReady = true;
-  if (requestHeaders) behaviorHints.proxyHeaders = { request: requestHeaders };
-
-  var description = rawStream.description || rawStream.title || rawStream.name || "Doom-addon stream";
-  return {
-    name: rawStream.name || "Doom-addon",
-    title: description,
-    description: description,
-    url: targetUrl,
-    behaviorHints: behaviorHints
-  };
-}
-
-(function() {
-  if (typeof getStreams !== "function" || getStreams.__doomNormalizedWrapped) return;
-
-  var __doomOriginalGetStreamsForNormalization = getStreams;
-  var __doomNormalizedGetStreams = function() {
-    return Promise.resolve(__doomOriginalGetStreamsForNormalization.apply(this, arguments))
-      .then(function(streams) {
-        if (!Array.isArray(streams)) return [];
-        return streams.map(__doomNormalizeStream).filter(Boolean);
-      });
-  };
-
-  __doomNormalizedGetStreams.__doomNormalizedWrapped = true;
-  getStreams = __doomNormalizedGetStreams;
-
-  if (typeof module !== "undefined" && module.exports) {
-    module.exports.getStreams = getStreams;
-  } else if (typeof global !== "undefined") {
-    global.getStreams = getStreams;
-  }
-})();
+module.exports = { getStreams };
