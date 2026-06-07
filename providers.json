@@ -618,7 +618,7 @@
       "id": "movies4u",
       "name": "Movies4u",
       "description": "Movies4u streams synced from D3adlyRocket/All-in-One-Nuvio",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
@@ -1927,6 +1927,50 @@
       "logo": "https://www.google.com/s2/favicons?domain=wecima.show&sz=128",
       "contentLanguage": [
         "ar"
+      ]
+    },
+    {
+      "id": "cinetv",
+      "name": "CineTV",
+      "description": "Multi Language Provider",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/cinetv.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/W1fmh5C9/cinetv.png",
+      "contentLanguage": [
+        "en",
+        "hi"
+      ]
+    },
+    {
+      "id": "fibwatch",
+      "name": "FibWatch",
+      "description": "Watch Movies, Series, Anime in English & Hindi",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/fibwatch.js",
+      "enabled": true,
+      "formats": [
+        "mkv",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/sfLR6dMm/fibwatch.png",
+      "contentLanguage": [
+        "en",
+        "hi"
       ]
     }
   ]
