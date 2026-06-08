@@ -1972,6 +1972,68 @@
         "en",
         "hi"
       ]
+    },
+    {
+      "id": "cinefreak",
+      "name": "CineFreak",
+      "description": "Direct MKV streams from cinefreak.nl",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/cinefreak.js",
+      "enabled": true,
+      "formats": [
+        "mkv",
+        "mp4"
+      ],
+      "logo": "https://i.postimg.cc/rpDB2284/cinefreak.png",
+      "contentLanguage": [
+        "en",
+        "hi"
+      ]
+    },
+    {
+      "id": "kurage",
+      "name": "Kurage",
+      "description": "Kurage.live anime streaming with tRPC API and multi-server proxy support",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/kurage.js",
+      "enabled": true,
+      "formats": [
+        "mp4"
+      ],
+      "logo": "https://kurage.live/favicon.ico",
+      "contentLanguage": [
+        "en"
+      ]
+    },
+    {
+      "id": "anizone",
+      "name": "AniZone",
+      "description": "AniZone high-quality anime streaming with multi-audio and soft subtitles",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/anizone.js",
+      "enabled": true,
+      "formats": [
+        "m3u8"
+      ],
+      "logo": "https://anizone.to/favicon.ico",
+      "contentLanguage": [
+        "en"
+      ]
     }
   ]
 }
