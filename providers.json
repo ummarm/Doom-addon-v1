@@ -2034,6 +2034,28 @@
       "contentLanguage": [
         "en"
       ]
+    },
+    {
+      "id": "corsaroviola",
+      "name": "CorsaroViola",
+      "description": "Movies & TV shows in 🇺🇸 & 🇮🇹 through IlCorsaroViola + TorBox, with instant HTTP streaming",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/corsaroviola.js",
+      "enabled": true,
+      "formats": [
+        "mkv",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/CLRByKRf/corsaroviola.png",
+      "contentLanguage": [
+        "en",
+        "it"
+      ]
     }
   ]
 }
