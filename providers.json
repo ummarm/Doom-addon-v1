@@ -2056,6 +2056,29 @@
         "en",
         "it"
       ]
+    },
+    {
+      "id": "anidb",
+      "name": "AniDB",
+      "description": "Subbed and dubbed anime from AniDB.",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/anidb.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/rmMzZ45K/anidb.png",
+      "contentLanguage": [
+        "en",
+        "ja",
+        "ko"
+      ]
     }
   ]
 }
