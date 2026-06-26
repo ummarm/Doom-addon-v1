@@ -2079,6 +2079,30 @@
         "ja",
         "ko"
       ]
+    },
+    {
+      "id": "gramcinema",
+      "name": "GramCinema",
+      "description": "Streams in Multi Lang from Bollywood.eu.org. Requires Cookie Token.",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/gramcinema.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/WbNPW7Jv/gramcinema.png",
+      "contentLanguage": [
+        "en",
+        "hi",
+        "ta",
+        "ru"
+      ]
     }
   ]
 }
