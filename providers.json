@@ -2150,6 +2150,27 @@
         "en",
         "hi"
       ]
+    },
+    {
+      "id": "vidrock",
+      "name": "🪨 VidRock",
+      "description": "VidRock - 1080p 480p and 360p",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/vidrock.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/brxL7qg3/multivid.png",
+      "contentLanguage": [
+        "en"
+      ]
     }
   ]
 }
