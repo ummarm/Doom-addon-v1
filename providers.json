@@ -2171,6 +2171,26 @@
       "contentLanguage": [
         "en"
       ]
+    },
+    {
+      "id": "movieshunt",
+      "name": "🎬 MoviesHunt",
+      "description": "Hollywood & Bollywood Movies in Multi Language",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie"
+      ],
+      "filename": "providers/movieshunt.js",
+      "enabled": true,
+      "formats": [
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/3Rc34LJj/movieshunt.png",
+      "contentLanguage": [
+        "hi",
+        "en"
+      ]
     }
   ]
 }
