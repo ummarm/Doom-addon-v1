@@ -2212,6 +2212,29 @@
         "en",
         "hi"
       ]
+    },
+    {
+      "id": "bollyflix",
+      "name": "BollyFlix",
+      "description": "Bollywood, Hollywood, and South Indian movies, in Dual Language",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/bollyflix.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "mkv",
+        "m3u8"
+      ],
+      "logo": "https://i.postimg.cc/GmdyJCQL/bollyflix.png",
+      "contentLanguage": [
+        "en",
+        "hi"
+      ]
     }
   ]
 }
