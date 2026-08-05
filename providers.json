@@ -1316,7 +1316,7 @@
       "id": "moviesmod",
       "name": "MoviesMod",
       "description": "Movie and TV show streams from MoviesMod with multiple quality options",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
@@ -1329,7 +1329,7 @@
         "m3u8",
         "mkv"
       ],
-      "logo": "https://i.postimg.cc/YqWDJtWW/moviesmod.png",
+      "logo": "https://www.google.com/s2/favicons?domain=moviesmod.farm&sz=128",
       "contentLanguage": [
         "en"
       ]
@@ -2327,6 +2327,28 @@
         "hi",
         "ru",
         "es"
+      ]
+    },
+    {
+      "id": "vidlove",
+      "name": "❤️ VidLove",
+      "description": "Movie and TV show streams from MovieBox, LookMovie, VidnNest etc",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/vidlove.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "m3u8",
+        "mkv"
+      ],
+      "logo": "https://i.postimg.cc/ZRjQytBY/vidlove.png",
+      "contentLanguage": [
+        "en"
       ]
     }
   ]
