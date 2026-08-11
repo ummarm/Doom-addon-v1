@@ -2373,6 +2373,28 @@
         "en",
         "hi"
       ]
+    },
+    {
+      "id": "moonflix",
+      "name": "MoonFlix",
+      "description": "",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/moonflix.js",
+      "enabled": true,
+      "formats": [
+        "mp4",
+        "mkv"
+      ],
+      "logo": "https://i.postimg.cc/90dVRJJq/moonflix.png",
+      "contentLanguage": [
+        "en",
+        "hi"
+      ]
     }
   ]
 }
