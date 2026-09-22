@@ -550,7 +550,7 @@
       "id": "moviebox",
       "name": "MovieBox",
       "description": "MovieBox - Worker-backed direct streams for movies and TV",
-      "version": "1.0.1",
+      "version": "1.2.0",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
@@ -2394,6 +2394,47 @@
       "contentLanguage": [
         "en",
         "hi"
+      ]
+    },
+    {
+      "id": "reanime",
+      "name": "Reanime",
+      "description": "Reanime anime streaming with automated AniList mapping and subtitle support",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/reanime.js",
+      "enabled": true,
+      "formats": [
+        "mkv",
+        "m3u8"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=reanime.to&sz=128",
+      "contentLanguage": [
+        "en"
+      ]
+    },
+    {
+      "id": "mapple",
+      "name": "Mapple",
+      "description": "Mapple multi-hoster movies and TV streaming with PoW session verification and direct HLS streams",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/mapple.js",
+      "enabled": true,
+      "formats": [
+        "m3u8"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=mapple.fun&sz=128",
+      "contentLanguage": [
+        "en"
       ]
     }
   ]
