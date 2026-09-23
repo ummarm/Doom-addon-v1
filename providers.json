@@ -920,7 +920,7 @@
         "m3u8",
         "mp4"
       ],
-      "logo": "https://i.postimg.cc/1X24MYhg/animesalt.png",
+      "logo": "https://www.google.com/s2/favicons?domain=animesalt.cx&sz=128",
       "contentLanguage": [
         "hi",
         "en",
@@ -2435,6 +2435,29 @@
       "logo": "https://www.google.com/s2/favicons?domain=mapple.fun&sz=128",
       "contentLanguage": [
         "en"
+      ]
+    },
+    {
+      "id": "animedekho",
+      "name": "AnimeDekho",
+      "description": "AnimeDekho streaming anime series and movies with Hindi dub, multi-audio and high-speed multi-server support",
+      "version": "1.0.0",
+      "author": "ummarm",
+      "supportedTypes": [
+        "movie",
+        "tv"
+      ],
+      "filename": "providers/animedekho.js",
+      "enabled": true,
+      "formats": [
+        "m3u8",
+        "mp4"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=animedekho.app&sz=128",
+      "contentLanguage": [
+        "hi",
+        "en",
+        "ja"
       ]
     }
   ]
