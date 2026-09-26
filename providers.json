@@ -664,7 +664,7 @@
       "id": "moviesdrive",
       "name": "MoviesDrive",
       "description": "MoviesDrive - Movies and TV shows with multiple streaming servers",
-      "version": "3.0.0",
+      "version": "3.0.1",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
@@ -677,7 +677,7 @@
         "mkv",
         "m3u8"
       ],
-      "logo": "https://i.postimg.cc/bwDbhq9q/moviesdrive.png",
+      "logo": "https://www.google.com/s2/favicons?domain=moviesdrives.my&sz=128",
       "contentLanguage": [
         "en",
         "hi"
@@ -687,7 +687,7 @@
       "id": "netmirror",
       "name": "NetMirror",
       "description": "NetMirror streams synced from D3adlyRocket/All-in-One-Nuvio",
-      "version": "1.0.0",
+      "version": "1.0.5",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
@@ -700,7 +700,7 @@
         "mkv",
         "m3u8"
       ],
-      "logo": "https://i.postimg.cc/L64M3bYV/netmirror.png",
+      "logo": "https://net22.cc/favicon.ico",
       "contentLanguage": [
         "en",
         "hi"
@@ -2019,7 +2019,7 @@
       "id": "anizone",
       "name": "AniZone",
       "description": "AniZone high-quality anime streaming with multi-audio and soft subtitles",
-      "version": "1.0.0",
+      "version": "1.0.2",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
