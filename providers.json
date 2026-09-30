@@ -550,7 +550,7 @@
       "id": "moviebox",
       "name": "MovieBox",
       "description": "MovieBox - Worker-backed direct streams for movies and TV",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "author": "ummarm",
       "supportedTypes": [
         "movie",
